@@ -294,10 +294,33 @@ async function mkThumb(file){
 }
 
 // ── AI ──
+function getApiKey(){return localStorage.getItem('anthropic_api_key')||'';}
+function saveApiKey(k){localStorage.setItem('anthropic_api_key',k);}
+function saveApiKeyFromUI(){
+  var el=document.getElementById('ant-key');
+  var k=el?el.value.trim():'';
+  if(!k){alert('Entre ta cle API Anthropic (sk-ant-...)');return;}
+  saveApiKey(k);
+  var btn=document.getElementById('ant-save-btn');
+  if(btn){btn.textContent='Sauvegarde !';setTimeout(function(){btn.textContent='Sauvegarder';},1500);}
+}
+
 async function callAI(messages){
-  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:messages})});
-  var d=await r.json();return d.content.map(function(i){return i.text||'';}).join('');
+  var apiKey=getApiKey();
+  if(!apiKey)throw new Error('Cle API manquante. Ouvre Parametres pour configurer.');
+  var r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key':apiKey,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:messages})
+  });
+  var d=await r.json();
+  if(d.error)throw new Error(d.error.message);
+  return d.content.map(function(i){return i.text||'';}).join('');
 }
 function parseJSON(text){
   var c=text.replace(/```json|```/g,'').trim();
@@ -653,11 +676,21 @@ function vSync(){
   '<div class="modal-header"><h1 style="font-size:18px">\u2601 Synchronisation PC \u2194 iPhone</h1>'+
   '<button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
   '<div class="gh-status" style="background:var(--bg2)"><span class="sync-dot" style="background:'+statusColor+'"></span><span>'+statusText+'</span></div>'+
-  '<div class="step-box" style="margin-top:12px"><div class="step-title">Configuration initiale (une seule fois)</div>'+
-    '<div class="step-item">1. Va sur <strong>github.com</strong> \u2192 Settings \u2192 Developer settings</div>'+
-    '<div class="step-item">2. Personal access tokens \u2192 Tokens (classic) \u2192 Generate new</div>'+
-    '<div class="step-item">3. Coche <strong>public_repo</strong> \u2192 G\u00e9n\u00e9rer \u2192 Copier le token</div>'+
-    '<div class="step-item">4. Colle-le ci-dessous et entre ton nom d\u2019utilisateur GitHub</div>'+
+  '<div class="step-box" style="margin-top:12px"><div class="step-title">Clé API Anthropic (requis pour IA)</div>'+
+    '<div class="step-item">1. Va sur <strong>console.anthropic.com</strong> → connexion</div>'+
+    '<div class="step-item">2. Menu gauche → <strong>API Keys</strong> → <strong>Create Key</strong></div>'+
+    '<div class="step-item">3. Copie la clé (commence par sk-ant-...)</div>'+
+    '<div class="step-item">4. Colle-la dans le champ ci-dessous → Sauvegarder</div>'+
+    '<div class="step-item" style="color:var(--amber)">⚠ La clé est payée à l’usage (~0,01$ par scan)</div>'+
+  '</div>'+
+  '<div class="field" style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)">'+
+    '<label style="font-size:13px;font-weight:bold;color:var(--text);margin-bottom:8px;display:block">⚙ Clé API Anthropic (pour IA)</label>'+
+    '<div style="font-size:12px;color:var(--text2);margin-bottom:8px">Obtiens ta clé sur <strong>console.anthropic.com</strong> → API Keys → Create Key</div>'+
+    '<input id="ant-key" type="password" class="token-input" value="'+h(getApiKey())+'" placeholder="sk-ant-api03-...">'+
+    '<button id=\"ant-save-btn\" onclick=\"saveApiKeyFromUI()\" style=\"margin-top:6px;width:100%;padding:6px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:12px;cursor:pointer\">Sauvegarder la clé</button>'+
+  '</div>'+
+  '<div class="field" style="margin-bottom:8px"><label style="font-size:13px;font-weight:bold;color:var(--text);margin-bottom:6px;display:block">☁ Synchronisation GitHub (optionnel)</label>'+
+    '<div style="font-size:12px;color:var(--text2);margin-bottom:8px">Pour synchroniser les données entre PC et iPhone</div>'+
   '</div>'+
   '<div class="field"><label>Token GitHub (ghp_...)</label><input id="gh-token" type="password" class="token-input" value="'+h(GH.token)+'" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"></div>'+
   '<div class="grid2">'+
