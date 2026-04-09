@@ -335,15 +335,28 @@ async function handleRcpt(files,src){
 }
 async function handleVisa(file){
   ST.proc=true;ST.msg='Lecture du rapport VISA...';render();
+  var rawResp='';
   try{
     var b64=await prepImg(file);
     var mt=file.type==='application/pdf'?'application/pdf':(file.type||'image/jpeg');
-    var txs=await doExtract(b64,mt,P_VISA);
-    var arr=Array.isArray(txs)?txs:[];
+    // Call AI directly to get raw response first
+    var msgs;
+    if(mt==='application/pdf')
+      msgs=[{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:P_VISA}]}];
+    else
+      msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mt,data:b64}},{type:'text',text:P_VISA}]}];
+    rawResp=await callAI(msgs);
+    var txs=parseJSON(rawResp);
+    var arr=Array.isArray(txs)?txs:(txs.transactions||txs.data||[]);
+    if(arr.length===0)throw new Error('Aucune transaction detectee');
     var sel=new Set();for(var i=0;i<arr.length;i++)sel.add(i);
     _md={view:'visa',txs:arr,sel:sel};
     ST.proc=false;ST.modal='visa';render();
-  }catch(err){ST.proc=false;_md={view:'visa-err'};ST.modal='visa-err';render();}
+  }catch(err){
+    ST.proc=false;
+    _md={view:'visa-err',raw:rawResp,errMsg:err.message};
+    ST.modal='visa-err';render();
+  }
 }
 async function handleEmail(){
   var el=document.getElementById('email-txt');var txt=el?el.value:'';
@@ -397,10 +410,13 @@ async function saveGHSettings(){
   var t=document.getElementById('gh-token');var o=document.getElementById('gh-owner');var r=document.getElementById('gh-repo');
   if(!t||!o)return;
   GH.token=t.value.trim();GH.owner=o.value.trim();GH.repo=(r&&r.value.trim())||'depenses';
+  if(!GH.token){alert('Entrez le token GitHub (ghp_...)');return;}
+  if(!GH.owner){alert('Entrez votre nom utilisateur GitHub (ex: pagau-cg)');return;}
+  var btn=document.getElementById('gh-save-btn');
+  if(btn){btn.textContent='Connexion...';btn.disabled=true;}
   saveGHConfig();
-  // Test & load
-  var ok=await syncFromGitHub();
-  if(ok)render();else renderSyncBar();
+  await syncFromGitHub();
+  ST.modal='sync';render();
 }
 async function manualSync(){
   var ok=await syncFromGitHub();
@@ -638,7 +654,7 @@ function vSync(){
   (isConfigured?'<button class="btn" style="width:100%;margin-bottom:8px" onclick="manualSync()">\u21bb R\u00e9synchroniser maintenant</button>':'')+
   '<div class="modal-footer">'+
     '<button class="btn" onclick="closeModal()" style="flex:1">Fermer</button>'+
-    '<button class="btn-primary" onclick="saveGHSettings()" style="flex:2">Enregistrer et connecter</button>'+
+    '<button id="gh-save-btn" class="btn-primary" onclick="saveGHSettings()" style="flex:2">Enregistrer et connecter</button>'+
   '</div></div>';
 }
 
@@ -661,16 +677,26 @@ function vScanTip(){
   '</div></div>';
 }
 function vVisaErr(){
-  return '<div class="modal-wrap">'+
+  var raw=_md&&_md.raw?_md.raw:'';
+  var errMsg=_md&&_md.errMsg?_md.errMsg:'';
+  var hasRaw=raw.length>10;
+  return '<div class="modal-wrap" style="max-width:580px">'+
   '<div class="modal-header"><h1 style="font-size:18px">Erreur VISA</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
-  '<div class="alert-amber">Impossible de lire le rapport. R\u00e9essaie avec une meilleure qualit\u00e9.</div>'+
-  '<div class="step-box"><div class="step-title">Conseils :</div>'+
-    '<div class="step-item">\u2022 Utilise le <strong>Scanner de documents</strong> iOS</div>'+
-    '<div class="step-item">\u2022 Texte net, pas d\u2019ombres</div>'+
+  '<div class="alert-amber">'+h(errMsg||'Impossible de lire le rapport.')+'</div>'+
+  (hasRaw?'<div style="font-size:12px;color:var(--text2);margin-bottom:6px">R\u00e9ponse re\u00e7ue de Claude :</div>'+
+    '<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;font-size:11px;max-height:150px;overflow-y:auto;white-space:pre-wrap;font-family:monospace;margin-bottom:12px;color:var(--text2)">'+h(raw.substring(0,600))+'</div>':'')+
+  '<div class="step-box"><div class="step-title">Solutions :</div>'+
+    '<div class="step-item">\u2022 Envoie la page 1 seulement (celle avec les transactions)</div>'+
+    '<div class="step-item">\u2022 Essaie une photo JPG plut\u00f4t que PDF (meilleure compatibilit\u00e9)</div>'+
+    '<div class="step-item">\u2022 V\u00e9rifie que tout le texte est net et lisible</div>'+
   '</div>'+
-  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Fermer</button>'+
-  '<button class="btn-primary" onclick="closeModal();document.getElementById(\'file-visa\').click()" style="flex:2">R\u00e9essayer</button></div></div>';
+  '<div class="modal-footer">'+
+    '<button class="btn" onclick="closeModal()" style="flex:1">Fermer</button>'+
+    '<button class="btn" onclick="closeModal();document.getElementById(\'file-visa\').click()" style="flex:1.5">R\u00e9essayer</button>'+
+    '<button class="btn-primary" onclick="closeModal();openAdd()" style="flex:1.5">+ Manuel</button>'+
+  '</div></div>';
 }
+
 function vForm(){
   var e=_md.expense;var isEdit=_md.mode==='edit';var isAI=e.source&&e.source!=='manual';
   var chips=CATS.map(function(c){return '<button class="cat-chip'+(e.category===c.label?' selected':'')+'" data-cat="'+h(c.label)+'" style="background:'+c.bg+';color:'+c.c+'" onclick="selCat(\''+h(c.label)+'\')">'+h(c.label)+'</button>';}).join('');
