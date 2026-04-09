@@ -337,18 +337,32 @@ async function handleVisa(file){
   ST.proc=true;ST.msg='Lecture du rapport VISA...';render();
   var rawResp='';
   try{
+    // Check file size (warn if >8MB)
+    if(file.size>8000000){
+      ST.proc=false;
+      _md={view:'visa-err',raw:'',errMsg:'Fichier trop volumineux ('+Math.round(file.size/1000000)+'MB). Essaie une photo JPG de la page des transactions seulement.'};
+      ST.modal='visa-err';render();return;
+    }
     var b64=await prepImg(file);
     var mt=file.type==='application/pdf'?'application/pdf':(file.type||'image/jpeg');
-    // Call AI directly to get raw response first
     var msgs;
     if(mt==='application/pdf')
       msgs=[{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:P_VISA}]}];
     else
       msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mt,data:b64}},{type:'text',text:P_VISA}]}];
     rawResp=await callAI(msgs);
-    var txs=parseJSON(rawResp);
-    var arr=Array.isArray(txs)?txs:(txs.transactions||txs.data||[]);
-    if(arr.length===0)throw new Error('Aucune transaction detectee');
+    var arr=null;
+    // Step 1: try direct JSON parse
+    try{var txs=parseJSON(rawResp);arr=Array.isArray(txs)?txs:(txs.transactions||txs.data||null);}catch(e){}
+    // Step 2: if failed, ask Claude to repair the JSON
+    if(!arr||arr.length===0){
+      ST.msg='Correction du format...';render();
+      var repairPrompt='Voici une reponse: tableau JSON de transactions. Retourne UNIQUEMENT le tableau JSON corrige sans aucun texte autour: '+rawResp;
+      var repaired=await callAI([{role:'user',content:repairPrompt}]);
+      rawResp=repaired;
+      try{var txs2=parseJSON(repaired);arr=Array.isArray(txs2)?txs2:(txs2.transactions||txs2.data||null);}catch(e){}
+    }
+    if(!arr||arr.length===0)throw new Error('Aucune transaction detectee dans le document');
     var sel=new Set();for(var i=0;i<arr.length;i++)sel.add(i);
     _md={view:'visa',txs:arr,sel:sel};
     ST.proc=false;ST.modal='visa';render();
@@ -766,6 +780,31 @@ function vSend(){
     '<button class="btn" onclick="doDownloadReport()" style="flex:1.5">\uD83D\uDCE5 Rapport</button>'+
     '<button class="btn-primary" onclick="doOpenMail()" style="flex:2">\u2709 Ouvrir Mail</button>'+
   '</div></div>';
+}
+
+
+// Pre-extracted transactions from a known VISA statement
+function importPreloaded(){
+  var txs=[
+    {date:"2026-01-04",vendor:"Apple.com/Bill",amount:21.83,starred:true,category:"Logiciels / Abo."},
+    {date:"2026-01-07",vendor:"Shell C12331 Chicoutimi",amount:21.81,starred:false,category:"Carburant / Essence"},
+    {date:"2026-01-09",vendor:"ITCloud Trois-Rivieres",amount:15.77,starred:false,category:"Logiciels / Abo."},
+    {date:"2026-01-09",vendor:"ITCloud Trois-Rivieres",amount:1346.36,starred:false,category:"Logiciels / Abo."},
+    {date:"2026-01-10",vendor:"CMBuilder Cadmakers Burnaby",amount:614.25,starred:false,category:"Equipements"},
+    {date:"2026-01-14",vendor:"SP Contech Batiment Mont-Royal",amount:477.15,starred:true,category:"Equipements"},
+    {date:"2026-01-14",vendor:"Apple.com/Bill",amount:51.68,starred:true,category:"Logiciels / Abo."},
+    {date:"2026-01-16",vendor:"Golf Virtuel Saguenay",amount:72.82,starred:false,category:"Autre"},
+    {date:"2026-01-20",vendor:"Microsoft #G136277881",amount:22.94,starred:false,category:"Logiciels / Abo."},
+    {date:"2026-01-21",vendor:"UConnect Services CAD Windsor",amount:13.99,starred:false,category:"Logiciels / Abo."},
+    {date:"2026-01-25",vendor:"Canva I04772-27415505",amount:39.00,starred:false,category:"Logiciels / Abo."},
+    {date:"2026-01-27",vendor:"ITCloud Trois-Rivieres",amount:30.22,starred:false,category:"Logiciels / Abo."},
+    {date:"2026-01-27",vendor:"Cegep de Jonquiere",amount:7.00,starred:true,category:"Formation"},
+    {date:"2026-01-28",vendor:"McDonalds #40333 Chicoutimi",amount:18.71,starred:false,category:"Repas / Restaurant"},
+    {date:"2026-01-30",vendor:"Apple.com/Bill",amount:37.93,starred:true,category:"Logiciels / Abo."},
+  ];
+  var sel=new Set();for(var i=0;i<txs.length;i++)sel.add(i);
+  _md={view:"visa",txs:txs,sel:sel};
+  ST.modal="visa";ST.period="2026-01";render();
 }
 
 load();
