@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Compte de depenses</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9IiMxNjJkNGEiLz4KICA8cmVjdCB4PSI1MiIgeT0iNTIiIHdpZHRoPSI0MDgiIGhlaWdodD0iNDA4IiByeD0iODAiIGZpbGw9IiMxYTNhNWMiLz4KCiAgPHJlY3QgeD0iMTQ4IiB5PSIxMTAiIHdpZHRoPSIyMTYiIGhlaWdodD0iMTQiIHJ4PSI3IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMjApIi8+CiAgPHJlY3QgeD0iMTQ4IiB5PSIxMzYiIHdpZHRoPSIxNDAiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIi8+CiAgPHJlY3QgeD0iMTQ4IiB5PSIxNTgiIHdpZHRoPSIxNjgiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIi8+CiAgPHJlY3QgeD0iMTQ4IiB5PSIxODAiIHdpZHRoPSIxMTYiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIi8+CgogIDxyZWN0IHg9IjE0OCIgeT0iMjEyIiB3aWR0aD0iMjE2IiBoZWlnaHQ9IjEuNSIgcng9IjAuNzUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xNSkiLz4KCiAgPHJlY3QgeD0iMTQ4IiB5PSIyMjYiIHdpZHRoPSI5MCIgaGVpZ2h0PSIxMCIgcng9IjUiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xMikiLz4KICA8cmVjdCB4PSIyOTUiIHk9IjIyMiIgd2lkdGg9IjY5IiBoZWlnaHQ9IjE4IiByeD0iOSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIyKSIvPgoKICA8Y2lyY2xlIGN4PSIzMDYiIGN5PSIzMjAiIHI9IjcyIiBmaWxsPSIjMWU3ZmNiIi8+CiAgPHBhdGggZD0iTTI3OCAzMjAgTDI5OSAzNDEgTDMzNiAyOTgiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgoKICA8cG9seWdvbiBwb2ludHM9IjEwMCw0MzAgMTI4LDQxMCAxNTYsNDMwIDE4NCw0MTAgMjEyLDQzMCAyNDAsNDEwIDI2OCw0MzAgMjk2LDQxMCAzMjQsNDMwIDM1Miw0MTAgMzgwLDQzMCA0MDgsNDEwIDQxMiw0MzAiIGZpbGw9IiMxNjJkNGEiLz4KPC9zdmc+Cg==">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -40,9 +39,7 @@ button{font-family:inherit;cursor:pointer;transition:all .12s}
 .card{background:var(--bg2);border-radius:var(--radius);padding:.85rem 1rem}
 .card-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
 .card-val{font-size:18px;color:var(--text)}
-.card-val.warn{color:var(--amber)}
-.card-val.ok{color:var(--green)}
-.card-val.perso{color:var(--purple)}
+.card-val.warn{color:var(--amber)} .card-val.ok{color:var(--green)} .card-val.perso{color:var(--purple)}
 .card-sub{font-size:11px;color:var(--text3);margin-top:2px}
 table{width:100%;border-collapse:collapse}
 th{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;padding:7px 10px;border-bottom:1px solid var(--border);font-weight:normal;text-align:left}
@@ -78,12 +75,11 @@ tr.personal td{background:#f0eeff;color:#1a1050}
 .empty{text-align:center;padding:2.5rem;color:var(--text3);border:1px dashed var(--border);border-radius:var(--radius)}
 .spinner{display:inline-block;width:13px;height:13px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;margin-right:6px;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
+.sync-bar{display:flex;align-items:center;font-size:12px;color:var(--text3);margin-bottom:.75rem;gap:4px;min-height:18px}
 .sync-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px;flex-shrink:0}
-.sync-bar{display:flex;align-items:center;font-size:12px;color:var(--text3);margin-bottom:.75rem;gap:4px}
 .alert-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-bd);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;margin-bottom:12px}
 .alert-green{background:var(--green-bg);color:var(--green);border:1px solid rgba(45,122,58,.2);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;margin-bottom:12px}
 .alert-purple{background:var(--purple-bg);color:var(--purple);border:1px solid rgba(82,66,184,.2);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;margin-bottom:12px}
-.alert-blue{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(26,111,191,.2);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;margin-bottom:12px}
 .section-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin:1.4rem 0 .7rem}
 .top-bar{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:.5rem}
 .period-nav{display:flex;align-items:center;gap:9px}
@@ -108,8 +104,9 @@ tr.personal td{background:#f0eeff;color:#1a1050}
 .step-title{font-size:13px;font-weight:bold;margin-bottom:8px;color:var(--text)}
 .step-item{font-size:13px;color:var(--text2);line-height:2.1}
 .send-preview{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;font-size:12px;color:var(--text2);line-height:1.8;max-height:200px;overflow-y:auto;margin-bottom:12px;white-space:pre-wrap;font-family:monospace,serif}
-.token-input{font-family:monospace,serif;letter-spacing:.05em}
-.gh-status{display:flex;align-items:center;gap:6px;font-size:12px;padding:8px 10px;border-radius:var(--radius-sm);margin-top:8px}
+.link-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
+.link-row:hover{background:var(--bg2)}
+.btn-lier{font-size:11px;padding:3px 9px;margin-right:3px;color:var(--blue);border-color:rgba(26,111,191,.4);border:1px solid rgba(26,111,191,.4);border-radius:var(--radius-sm);background:var(--bg);cursor:pointer;font-family:inherit}
 </style>
 </head>
 <body>
@@ -117,9 +114,9 @@ tr.personal td{background:#f0eeff;color:#1a1050}
 <input type="file" id="file-scan" accept="image/*" multiple style="display:none">
 <input type="file" id="file-lib" accept="image/*,.pdf" multiple style="display:none">
 <input type="file" id="file-visa" accept="image/*,.pdf" style="display:none">
+<input type="file" id="file-eml" accept=".eml,.msg" multiple style="display:none">
 <script>
-// ── CATEGORIES ──
-const CATS=[
+var CATS=[
   {label:'Repas / Restaurant',  bg:'#fceaea',c:'#8a1a1a'},
   {label:'Carburant / Essence', bg:'#fff4d6',c:'#7a4d00'},
   {label:'Logiciels / Abo.',    bg:'#e8f1fb',c:'#174f89'},
@@ -128,22 +125,20 @@ const CATS=[
   {label:'Transport',           bg:'#e0f4ef',c:'#0a4e3a'},
   {label:'Formation',           bg:'#fdf3ee',c:'#8a3a10'},
   {label:'Hebergement',         bg:'#fce8f3',c:'#7a1a52'},
-  {label:'Autre',               bg:'#f0efe9',c:'#4a4a42'},
+  {label:'Autre',               bg:'#f0efe9',c:'#4a4a42'}
 ];
-const CM={};CATS.forEach(function(c){CM[c.label]=c;});
+var CM={};CATS.forEach(function(c){CM[c.label]=c;});
 function ci(l){return CM[l]||CATS[8];}
 
-// ── STATE ──
 var ST={expenses:[],period:nowP(),modal:null,filter:'all',proc:false,msg:'',adjEmail:''};
 var _md=null;
-var SYNC={status:'off',msg:'',sha:null};   // off | ok | syncing | error | no-config
+var SYNC={status:'off',msg:'',sha:null};
 var GH={token:'',owner:'',repo:'depenses'};
 
-// ── UTILS ──
 function nowP(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');}
 function nowD(){return new Date().toISOString().split('T')[0];}
 function pLabel(p){var a=p.split('-');var M=['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Decembre'];return M[parseInt(a[1])-1]+' '+a[0];}
-function prevP(p){var y=parseInt(p.split('-')[0]),m=parseInt(p.split('-')[1]);return m===1?(y-1)+'-12':y+'-'+String(m-1).padStart(2,'0');}
+function prevP(p){var y=parseInt(p),m=parseInt(p.split('-')[1]);y=parseInt(p.split('-')[0]);return m===1?(y-1)+'-12':y+'-'+String(m-1).padStart(2,'0');}
 function nextP(p){var y=parseInt(p.split('-')[0]),m=parseInt(p.split('-')[1]);return m===12?(y+1)+'-01':y+'-'+String(m+1).padStart(2,'0');}
 function ep(d){return d?d.substring(0,7):ST.period;}
 function fmt(n){return(+n||0).toFixed(2).replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g,' ')+'\u00a0$';}
@@ -153,53 +148,38 @@ function n2(v){var f=parseFloat(v);return isNaN(f)?null:f;}
 function h(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function b64enc(str){return btoa(unescape(encodeURIComponent(str)));}
 function b64dec(str){return decodeURIComponent(escape(atob(str.replace(/\n/g,''))));}
+function getApiKey(){return localStorage.getItem('anthropic_api_key')||'';}
+function saveApiKey(k){localStorage.setItem('anthropic_api_key',k);}
+function saveApiKeyFromUI(){var el=document.getElementById('ant-key');var k=el?el.value.trim():'';if(!k){alert('Entre ta cle API Anthropic');return;}saveApiKey(k);var btn=document.getElementById('ant-save-btn');if(btn){btn.textContent='Sauvegarde !';setTimeout(function(){btn.textContent='Sauvegarder la cle';},1500);}}
 
-// ── LOCAL STORAGE ──
-async function loadLocal(){
-  try{
-    var r=await window.storage.get('dep_v8');
-    if(r){var d=JSON.parse(r.value);ST.expenses=d.expenses||[];ST.adjEmail=d.adjEmail||'';}
-  }catch(e){ST.expenses=[];}
-}
-async function saveLocal(){
-  try{await window.storage.set('dep_v8',JSON.stringify({expenses:ST.expenses,adjEmail:ST.adjEmail}));}catch(e){}
-}
-
-// ── GITHUB SYNC ──
-function loadGHConfig(){
-  try{var c=localStorage.getItem('gh_cfg');if(c)Object.assign(GH,JSON.parse(c));}catch(e){}
-}
-function saveGHConfig(){
-  try{localStorage.setItem('gh_cfg',JSON.stringify({token:GH.token,owner:GH.owner,repo:GH.repo}));}catch(e){}
-}
-function ghHeaders(){
-  return{'Authorization':'token '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
-}
-function ghUrl(){
-  return'https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/depenses-data.json';
-}
+async function loadLocal(){try{var r=await window.storage.get('dep_v9');if(r){var d=JSON.parse(r.value);ST.expenses=d.expenses||[];ST.adjEmail=d.adjEmail||'';}}catch(e){ST.expenses=[];}}
+async function saveLocal(){try{await window.storage.set('dep_v9',JSON.stringify({expenses:ST.expenses,adjEmail:ST.adjEmail}));}catch(e){}}
+function loadGHConfig(){try{var c=localStorage.getItem('gh_cfg');if(c)Object.assign(GH,JSON.parse(c));}catch(e){}}
+function saveGHConfig(){try{localStorage.setItem('gh_cfg',JSON.stringify({token:GH.token,owner:GH.owner,repo:GH.repo}));}catch(e){}}
+function ghHeaders(){return{'Authorization':'token '+GH.token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};}
+function ghUrl(){return 'https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/depenses-data.json';}
 
 async function syncFromGitHub(){
   if(!GH.token||!GH.owner){SYNC.status='no-config';return false;}
   SYNC.status='syncing';SYNC.msg='Connexion...';renderSyncBar();
   try{
     var r=await fetch(ghUrl(),{headers:ghHeaders()});
-    if(r.status===404){
-      SYNC.status='ok';SYNC.msg='Nouveau fichier - sera cree a la premiere sauvegarde';
-      SYNC.sha=null;return true;
-    }
-    if(!r.ok){SYNC.status='error';SYNC.msg='Erreur HTTP '+r.status;return false;}
+    if(r.status===404){SYNC.sha=null;await syncToGitHub();return true;}
+    if(!r.ok){SYNC.status='error';SYNC.msg='Erreur HTTP '+r.status;renderSyncBar();return false;}
     var d=await r.json();
     SYNC.sha=d.sha;
-    var data=JSON.parse(b64dec(d.content));
-    ST.expenses=data.expenses||[];
-    ST.adjEmail=data.adjEmail||'';
+    var remote=JSON.parse(b64dec(d.content));
+    var remExp=remote.expenses||[];
+    var merged={};
+    remExp.forEach(function(e){merged[e.id]=e;});
+    ST.expenses.forEach(function(e){merged[e.id]=e;});
+    ST.expenses=Object.values(merged).sort(function(a,b){return(a.date||'').localeCompare(b.date||'');});
+    if(remote.adjEmail)ST.adjEmail=remote.adjEmail;
     await saveLocal();
+    await syncToGitHub();
     SYNC.status='ok';SYNC.msg='Synchronise - '+new Date().toLocaleTimeString('fr-CA');
-    return true;
-  }catch(e){
-    SYNC.status='error';SYNC.msg='Erreur: '+e.message;return false;
-  }
+    renderSyncBar();return true;
+  }catch(e){SYNC.status='error';SYNC.msg='Erreur: '+e.message;renderSyncBar();return false;}
 }
 
 async function syncToGitHub(){
@@ -208,74 +188,42 @@ async function syncToGitHub(){
   var content=b64enc(JSON.stringify(data));
   var body={message:'Depenses '+nowD(),content:content};
   if(SYNC.sha)body.sha=SYNC.sha;
-  SYNC.status='syncing';SYNC.msg='Sauvegarde...';renderSyncBar();
   try{
     var r=await fetch(ghUrl(),{method:'PUT',headers:ghHeaders(),body:JSON.stringify(body)});
-    if(r.ok){
-      var d=await r.json();
-      SYNC.sha=d.content.sha;
-      SYNC.status='ok';SYNC.msg='Synchronise - '+new Date().toLocaleTimeString('fr-CA');
-    }else{
-      SYNC.status='error';SYNC.msg='Erreur sauvegarde HTTP '+r.status;
-    }
-  }catch(e){
-    SYNC.status='error';SYNC.msg='Erreur: '+e.message;
-  }
+    if(r.ok){var d=await r.json();SYNC.sha=d.content.sha;SYNC.status='ok';SYNC.msg='Synchronise - '+new Date().toLocaleTimeString('fr-CA');}
+    else{SYNC.status='error';SYNC.msg='Erreur sauvegarde HTTP '+r.status;}
+  }catch(e){SYNC.status='error';SYNC.msg='Erreur: '+e.message;}
   renderSyncBar();
 }
 
 function renderSyncBar(){
-  var bar=document.getElementById('sync-bar');
-  if(!bar)return;
+  var bar=document.getElementById('sync-bar');if(!bar)return;
   var dot='#ccc',label='';
   if(SYNC.status==='ok'){dot='#2d7a3a';label='\u2713 '+SYNC.msg;}
   else if(SYNC.status==='syncing'){dot='#1a6fbf';label='\u21bb '+SYNC.msg;}
   else if(SYNC.status==='error'){dot='#b83232';label='\u26a0 '+SYNC.msg;}
-  else if(SYNC.status==='no-config'){dot='#ccc';label='Synchronisation non configur\u00e9e \u2014 <button onclick="ST.modal=\'sync\';_md={};render()" style="border:none;background:none;color:var(--blue);cursor:pointer;font-size:12px;font-family:inherit;padding:0">Configurer</button>';}
-  else{dot='#ccc';label='';}
+  else if(SYNC.status==='no-config'){dot='#ccc';label='Sync non configure';}
   bar.innerHTML='<span class="sync-dot" style="background:'+dot+'"></span>'+label;
 }
 
 async function load(){
   loadGHConfig();
-  if(GH.token&&GH.owner){
-    var ok=await syncFromGitHub();
-    if(!ok)await loadLocal();
-  }else{
-    await loadLocal();
-    SYNC.status='no-config';
-  }
+  if(GH.token&&GH.owner){var ok=await syncFromGitHub();if(!ok)await loadLocal();}
+  else{await loadLocal();SYNC.status='no-config';}
   render();
 }
+async function save(){await saveLocal();syncToGitHub();}
 
-async function save(){
-  await saveLocal();
-  syncToGitHub();   // fire and forget — non-blocking
-}
-
-// ── CRUD ──
-async function addE(data){
-  ST.expenses.push(Object.assign({},data,{id:uid(),period:ep(data.date),createdAt:new Date().toISOString()}));
-  await save();
-}
-async function updE(id,data){
-  var i=ST.expenses.findIndex(function(e){return e.id===id;});
-  if(i>=0){Object.assign(ST.expenses[i],data);if(data.date)ST.expenses[i].period=ep(data.date);await save();}
-}
+async function addE(data){ST.expenses.push(Object.assign({},data,{id:uid(),period:ep(data.date),createdAt:new Date().toISOString()}));await save();}
+async function updE(id,data){var i=ST.expenses.findIndex(function(e){return e.id===id;});if(i>=0){Object.assign(ST.expenses[i],data);if(data.date)ST.expenses[i].period=ep(data.date);await save();}}
 async function delE(id){ST.expenses=ST.expenses.filter(function(e){return e.id!==id;});await save();}
 
-// ── IMAGE UTILS ──
 function toB64(file){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result.split(',')[1]);};r.onerror=rej;r.readAsDataURL(file);});}
 async function prepImg(file){
   if(file.type==='application/pdf')return toB64(file);
   return new Promise(function(res){
     var img=new Image(),url=URL.createObjectURL(file);
-    img.onload=function(){
-      var MAX=2400,s=Math.min(MAX/img.width,MAX/img.height,1);
-      var c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);
-      var ctx=c.getContext('2d');ctx.filter='contrast(1.08) brightness(1.02)';ctx.drawImage(img,0,0,c.width,c.height);
-      URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.93).split(',')[1]);
-    };
+    img.onload=function(){var MAX=2400,s=Math.min(MAX/img.width,MAX/img.height,1);var c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);var ctx=c.getContext('2d');ctx.filter='contrast(1.08) brightness(1.02)';ctx.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.93).split(',')[1]);};
     img.onerror=function(){toB64(file).then(res);};img.src=url;
   });
 }
@@ -283,41 +231,15 @@ async function mkThumb(file){
   return new Promise(function(res){
     if(!file.type.startsWith('image/')){res(null);return;}
     var img=new Image(),url=URL.createObjectURL(file);
-    img.onload=function(){
-      var s=Math.min(300/img.width,180/img.height,1);
-      var c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);
-      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
-      URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.72));
-    };
+    img.onload=function(){var s=Math.min(300/img.width,180/img.height,1);var c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.72));};
     img.onerror=function(){res(null);};img.src=url;
   });
 }
 
-// ── AI ──
-function getApiKey(){return localStorage.getItem('anthropic_api_key')||'';}
-function saveApiKey(k){localStorage.setItem('anthropic_api_key',k);}
-function saveApiKeyFromUI(){
-  var el=document.getElementById('ant-key');
-  var k=el?el.value.trim():'';
-  if(!k){alert('Entre ta cle API Anthropic (sk-ant-...)');return;}
-  saveApiKey(k);
-  var btn=document.getElementById('ant-save-btn');
-  if(btn){btn.textContent='Sauvegarde !';setTimeout(function(){btn.textContent='Sauvegarder';},1500);}
-}
-
 async function callAI(messages){
   var apiKey=getApiKey();
-  if(!apiKey)throw new Error('Cle API manquante. Ouvre Parametres pour configurer.');
-  var r=await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST',
-    headers:{
-      'Content-Type':'application/json',
-      'x-api-key':apiKey,
-      'anthropic-version':'2023-06-01',
-      'anthropic-dangerous-direct-browser-access':'true'
-    },
-    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:messages})
-  });
+  if(!apiKey)throw new Error('Cle API manquante. Ouvre Parametres (\u2699) pour configurer.');
+  var r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,messages:messages})});
   var d=await r.json();
   if(d.error)throw new Error(d.error.message);
   return d.content.map(function(i){return i.text||'';}).join('');
@@ -334,14 +256,37 @@ var P_VISA='Analyse ce releve Visa. UNIQUEMENT tableau JSON:\n[{"date":"YYYY-MM-
 
 async function doExtract(b64,mt,prompt){
   var t;
-  if(mt==='application/pdf')
-    t=await callAI([{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:prompt}]}]);
-  else
-    t=await callAI([{role:'user',content:[{type:'image',source:{type:'base64',media_type:mt,data:b64}},{type:'text',text:prompt}]}]);
+  if(mt==='application/pdf')t=await callAI([{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:prompt}]}]);
+  else t=await callAI([{role:'user',content:[{type:'image',source:{type:'base64',media_type:mt,data:b64}},{type:'text',text:prompt}]}]);
   return parseJSON(t);
 }
 
-// ── FILE HANDLERS ──
+function normalize(s){return(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');}
+function autoMatch(newExp){
+  if(!newExp.amount_ttc||!newExp.vendor)return;
+  var amt=parseFloat(newExp.amount_ttc)||0;
+  var v=normalize(newExp.vendor).substring(0,6);
+  if(v.length<3)return;
+  var matches=ST.expenses.filter(function(e){
+    if(e.id===newExp.id||e.source!=='visa_import'||e.matchedReceiptId)return false;
+    if(Math.abs((parseFloat(e.amount_ttc)||0)-amt)>0.02)return false;
+    var ev=normalize(e.vendor);
+    return ev.includes(v)||v.includes(ev.substring(0,6));
+  });
+  if(matches.length!==1)return;
+  var visa=matches[0];
+  var vi=ST.expenses.findIndex(function(e){return e.id===visa.id;});
+  var ri=ST.expenses.findIndex(function(e){return e.id===newExp.id;});
+  if(vi>=0)Object.assign(ST.expenses[vi],{hasReceipt:true,matchedReceiptId:newExp.id,visaStarred:false});
+  if(ri>=0)Object.assign(ST.expenses[ri],{matchedVisaId:visa.id});
+  save();
+  var b=document.createElement('div');
+  b.style.cssText='position:fixed;top:1rem;right:1rem;background:#1a5426;color:#fff;padding:10px 16px;border-radius:8px;font-size:13px;font-family:Georgia,serif;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.3)';
+  b.textContent='\u2713 Facture liee automatiquement a '+visa.vendor;
+  document.body.appendChild(b);
+  setTimeout(function(){if(b.parentNode)b.parentNode.removeChild(b);},3500);
+}
+
 async function handleRcpt(files,src){
   for(var i=0;i<files.length;i++){
     var file=files[i];ST.proc=true;ST.msg='Analyse de la facture...';render();
@@ -356,48 +301,36 @@ async function handleRcpt(files,src){
     ST.proc=false;ST.modal='form';render();
   }
 }
+
 async function handleVisa(file){
   ST.proc=true;ST.msg='Lecture du rapport VISA...';render();
   var rawResp='';
   try{
-    // Check file size (warn if >8MB)
-    if(file.size>8000000){
-      ST.proc=false;
-      _md={view:'visa-err',raw:'',errMsg:'Fichier trop volumineux ('+Math.round(file.size/1000000)+'MB). Essaie une photo JPG de la page des transactions seulement.'};
-      ST.modal='visa-err';render();return;
-    }
+    if(file.size>8000000){ST.proc=false;_md={view:'visa-err',errMsg:'Fichier trop volumineux. Essaie une photo JPG de la page des transactions.'};ST.modal='visa-err';render();return;}
     var b64=await prepImg(file);
     var mt=file.type==='application/pdf'?'application/pdf':(file.type||'image/jpeg');
     var msgs;
-    if(mt==='application/pdf')
-      msgs=[{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:P_VISA}]}];
-    else
-      msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mt,data:b64}},{type:'text',text:P_VISA}]}];
+    if(mt==='application/pdf')msgs=[{role:'user',content:[{type:'document',source:{type:'base64',media_type:'application/pdf',data:b64}},{type:'text',text:P_VISA}]}];
+    else msgs=[{role:'user',content:[{type:'image',source:{type:'base64',media_type:mt,data:b64}},{type:'text',text:P_VISA}]}];
     rawResp=await callAI(msgs);
     var arr=null;
-    // Step 1: try direct JSON parse
     try{var txs=parseJSON(rawResp);arr=Array.isArray(txs)?txs:(txs.transactions||txs.data||null);}catch(e){}
-    // Step 2: if failed, ask Claude to repair the JSON
     if(!arr||arr.length===0){
       ST.msg='Correction du format...';render();
-      var repairPrompt='Voici une reponse: tableau JSON de transactions. Retourne UNIQUEMENT le tableau JSON corrige sans aucun texte autour: '+rawResp;
-      var repaired=await callAI([{role:'user',content:repairPrompt}]);
+      var repairMsg='Retourne UNIQUEMENT un tableau JSON corrige sans aucun texte: '+rawResp;
+      var repaired=await callAI([{role:'user',content:repairMsg}]);
       rawResp=repaired;
       try{var txs2=parseJSON(repaired);arr=Array.isArray(txs2)?txs2:(txs2.transactions||txs2.data||null);}catch(e){}
     }
-    if(!arr||arr.length===0)throw new Error('Aucune transaction detectee dans le document');
+    if(!arr||arr.length===0)throw new Error('Aucune transaction detectee');
     var sel=new Set();for(var i=0;i<arr.length;i++)sel.add(i);
     _md={view:'visa',txs:arr,sel:sel};
     ST.proc=false;ST.modal='visa';render();
-  }catch(err){
-    ST.proc=false;
-    _md={view:'visa-err',raw:rawResp,errMsg:err.message};
-    ST.modal='visa-err';render();
-  }
+  }catch(err){ST.proc=false;_md={view:'visa-err',raw:rawResp,errMsg:err.message};ST.modal='visa-err';render();}
 }
+
 async function handleEmail(){
-  var el=document.getElementById('email-txt');var txt=el?el.value:'';
-  if(!txt.trim())return;
+  var el=document.getElementById('email-txt');var txt=el?el.value:'';if(!txt.trim())return;
   ST.proc=true;ST.msg='Analyse du courriel...';render();
   try{
     var t=await callAI([{role:'user',content:P_RCPT+'\n\nTexte:\n'+txt}]);
@@ -407,16 +340,44 @@ async function handleEmail(){
   }catch(e){ST.proc=false;render();}
 }
 
-// ── MODAL ACTIONS ──
+async function handleEml(file){
+  ST.proc=true;ST.msg='Lecture du courriel...';render();
+  try{
+    var text=await new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(r.result);};r.onerror=rej;r.readAsText(file,'utf-8');});
+    var subjectMatch=text.match(/^Subject:\s*(.+)/im);
+    var subject=subjectMatch?subjectMatch[1].trim():'';
+    var bodyStart=text.indexOf('\r\n\r\n');if(bodyStart===-1)bodyStart=text.indexOf('\n\n');
+    var body=bodyStart>=0?text.substring(bodyStart+2):'';
+    body=body.replace(/<[^>]+>/g,' ').replace(/=\r?\n/g,'').replace(/=([0-9A-Fa-f]{2})/g,function(_,hx){return String.fromCharCode(parseInt(hx,16));}).replace(/\s+/g,' ').trim();
+    ST.msg='Extraction des donnees...';render();
+    var t=await callAI([{role:'user',content:P_RCPT+'\n\nObjet: '+subject+'\n\n'+body.substring(0,3000)}]);
+    var ex=parseJSON(t);
+    _md={view:'form',mode:'add',expense:{date:ex.date||nowD(),vendor:ex.vendor||'',amount_ttc:ex.amount_ttc||'',amount_ht:ex.amount_ht||'',tps:ex.tps||'',tvq:ex.tvq||'',category:ex.category||'Autre',notes:ex.notes||subject||'',hasReceipt:true,isPersonal:false,thumb:null,source:'email_drag'}};
+    ST.proc=false;ST.modal='form';render();
+  }catch(err){
+    ST.proc=false;
+    _md={view:'form',mode:'add',expense:{date:nowD(),vendor:'',amount_ttc:'',amount_ht:'',tps:'',tvq:'',category:'Autre',notes:'Extraction incomplete',hasReceipt:true,isPersonal:false,thumb:null,source:'email_drag'}};
+    ST.modal='form';render();
+  }
+}
+
 function openAdd(){_md={view:'form',mode:'add',expense:{date:nowD(),vendor:'',amount_ttc:'',amount_ht:'',tps:'',tvq:'',category:'Autre',notes:'',hasReceipt:false,isPersonal:false,thumb:null,source:'manual'}};ST.modal='form';render();}
 function openEdit(id){var e=ST.expenses.find(function(x){return x.id===id;});if(!e)return;_md={view:'form',mode:'edit',expense:Object.assign({},e)};ST.modal='form';render();}
 function closeModal(){ST.modal=null;_md=null;render();}
 
-function selCat(label){
-  if(!_md||!_md.expense)return;
-  _md.expense.category=label;
-  document.querySelectorAll('.cat-chip').forEach(function(b){b.classList.toggle('selected',b.dataset.cat===label);});
+function openLinkReceipt(visaId){
+  var receipts=ST.expenses.filter(function(e){return e.source!=='visa_import'&&e.hasReceipt&&!e.matchedVisaId;}).sort(function(a,b){return(b.date||'').localeCompare(a.date||'');});
+  _md={view:'link-receipt',visaId:visaId,receipts:receipts};ST.modal='link-receipt';render();
 }
+async function doLinkReceipt(visaId,rcptId){
+  var vi=ST.expenses.findIndex(function(e){return e.id===visaId;});
+  var ri=ST.expenses.findIndex(function(e){return e.id===rcptId;});
+  if(vi>=0)Object.assign(ST.expenses[vi],{hasReceipt:true,matchedReceiptId:rcptId,visaStarred:false});
+  if(ri>=0)Object.assign(ST.expenses[ri],{matchedVisaId:visaId});
+  await save();closeModal();
+}
+
+function selCat(label){if(!_md||!_md.expense)return;_md.expense.category=label;document.querySelectorAll('.cat-chip').forEach(function(b){b.classList.toggle('selected',b.dataset.cat===label);});}
 function syncForm(){
   if(!_md||!_md.expense)return;
   ['vendor','date','amount_ttc','amount_ht','tps','tvq','notes'].forEach(function(f){var el=document.getElementById('f-'+f);if(el)_md.expense[f]=el.value;});
@@ -426,9 +387,14 @@ function syncForm(){
 async function saveForm(){
   syncForm();var e=_md.expense;
   var data={vendor:e.vendor||'',date:e.date||nowD(),amount_ttc:parseFloat(e.amount_ttc)||0,amount_ht:n2(e.amount_ht),tps:n2(e.tps),tvq:n2(e.tvq),category:e.category||'Autre',notes:e.notes||'',hasReceipt:!!e.hasReceipt,isPersonal:!!e.isPersonal,thumb:e.thumb||null,source:e.source||'manual'};
-  if(_md.mode==='edit')await updE(e.id,data);else await addE(data);
+  if(_md.mode==='edit'){await updE(e.id,data);}
+  else{
+    var ne=Object.assign({},data,{id:uid(),period:ep(data.date),createdAt:new Date().toISOString()});
+    ST.expenses.push(ne);await save();autoMatch(ne);
+  }
   closeModal();
 }
+
 async function importVisa(){
   if(!_md||!_md.txs)return;
   for(var i of _md.sel){var tx=_md.txs[i];if(!tx)continue;await addE({date:tx.date||nowD(),vendor:tx.vendor||'',amount_ttc:+tx.amount||0,amount_ht:null,tps:null,tvq:null,category:tx.category||'Autre',notes:'',hasReceipt:!tx.starred,isPersonal:false,visaStarred:!!tx.starred,source:'visa_import'});}
@@ -442,47 +408,32 @@ function toggleVisa(i){
 }
 async function toggleRcpt(id){var e=ST.expenses.find(function(x){return x.id===id;});if(e)await updE(id,{hasReceipt:!e.hasReceipt});render();}
 
-// ── SYNC SETTINGS ──
 async function saveGHSettings(){
-  var t=document.getElementById('gh-token');var o=document.getElementById('gh-owner');var r=document.getElementById('gh-repo');
+  var t=document.getElementById('gh-token'),o=document.getElementById('gh-owner'),rp=document.getElementById('gh-repo');
   if(!t||!o)return;
-  GH.token=t.value.trim();GH.owner=o.value.trim();GH.repo=(r&&r.value.trim())||'depenses';
-  if(!GH.token){alert('Entrez le token GitHub (ghp_...)');return;}
-  if(!GH.owner){alert('Entrez votre nom utilisateur GitHub (ex: pagau-cg)');return;}
-  var btn=document.getElementById('gh-save-btn');
-  if(btn){btn.textContent='Connexion...';btn.disabled=true;}
+  GH.token=t.value.trim();GH.owner=o.value.trim();GH.repo=(rp&&rp.value.trim())||'depenses';
+  if(!GH.token){alert('Entre le token GitHub');return;}
+  if(!GH.owner){alert('Entre ton nom utilisateur GitHub');return;}
+  var btn=document.getElementById('gh-save-btn');if(btn){btn.textContent='Connexion...';btn.disabled=true;}
   saveGHConfig();
   await syncFromGitHub();
   ST.modal='sync';render();
 }
-async function manualSync(){
-  var ok=await syncFromGitHub();
-  if(ok)render();
-}
+async function manualSync(){await syncFromGitHub();render();}
 
-// ── SEND TO ASSISTANT ──
 function generateMailBody(all){
   var biz=all.filter(function(e){return!e.isPersonal;});
   var perso=all.filter(function(e){return e.isPersonal;});
   var total=biz.reduce(function(s,e){return s+(+e.amount_ttc||0);},0);
-  var totalHT=biz.filter(function(e){return e.amount_ht!=null;}).reduce(function(s,e){return s+(+e.amount_ht||0);},0);
   var miss=all.filter(function(e){return!e.hasReceipt;}).length;
   var persoAmt=perso.reduce(function(s,e){return s+(+e.amount_ttc||0);},0);
   var catT={};biz.forEach(function(e){var c=e.category||'Autre';catT[c]=(catT[c]||0)+(+e.amount_ttc||0);});
   var body='Bonjour,\n\nVeuillez trouver ci-joint le compte de depenses pour '+pLabel(ST.period)+'.\n\n';
-  body+='=== RESUME ===\n';
-  body+='Total TTC          : '+fmt(total)+'\n';
-  if(totalHT>0)body+='Total avant taxes  : '+fmt(totalHT)+'\n';
-  body+='Transactions       : '+biz.length+'\n';
-  body+='Recus confirmes    : '+biz.filter(function(e){return e.hasReceipt;}).length+'/'+biz.length+'\n';
+  body+='=== RESUME ===\nTotal TTC : '+fmt(total)+'\nTransactions : '+biz.length+'\nRecus confirmes : '+biz.filter(function(e){return e.hasReceipt;}).length+'/'+biz.length+'\n';
   if(miss>0)body+='ATTENTION recus manquants : '+miss+'\n';
   body+='\n=== REPARTITION PAR POSTE BUDGETAIRE ===\n';
   Object.entries(catT).sort(function(a,b){return b[1]-a[1];}).forEach(function(kv){body+=kv[0].padEnd(28,'.')+' '+fmt(kv[1])+'\n';});
-  if(perso.length>0){
-    body+='\n=== DEPENSES PERSONNELLES A REMBOURSER ===\n';
-    perso.forEach(function(e){body+=fd(e.date)+' - '+e.vendor+' : '+fmt(+e.amount_ttc)+'\n';});
-    body+='TOTAL : '+fmt(persoAmt)+'\n';
-  }
+  if(perso.length>0){body+='\n=== DEPENSES PERSONNELLES A REMBOURSER ===\n';perso.forEach(function(e){body+=fd(e.date)+' - '+e.vendor+' : '+fmt(+e.amount_ttc)+'\n';});body+='TOTAL : '+fmt(persoAmt)+'\n';}
   body+='\nLe rapport complet est joint en piece attachee.\n\nCordialement,\nP. Alexandre Gauthier';
   return body;
 }
@@ -495,60 +446,44 @@ function generateReportHTML(all){
   var miss=all.filter(function(e){return!e.hasReceipt;}).length;
   var catT={};biz.forEach(function(e){var c=e.category||'Autre';catT[c]=(catT[c]||0)+(+e.amount_ttc||0);});
   var rows=all.slice().sort(function(a,b){return(a.date||'').localeCompare(b.date||'');}).map(function(e){
-    var c=ci(e.category);
-    var bg=e.isPersonal?'background:#f0eeff':e.visaStarred?'background:#fde8e8':'';
-    return '<tr style="'+bg+'"><td>'+h(fd(e.date))+'</td><td><strong>'+h(e.vendor||'')+'</strong>'+(e.isPersonal?' <span style="background:#e8e4ff;color:#3a2a9a;font-size:10px;padding:1px 5px;border-radius:3px">Perso</span>':'')+(e.notes?' <span style="font-size:11px;color:#999">'+h(e.notes)+'</span>':'')+'</td>'+
-    '<td><span style="background:'+c.bg+';color:'+c.c+';padding:2px 6px;border-radius:3px;font-size:11px">'+h(e.category||'Autre')+'</span></td>'+
-    '<td style="text-align:right">'+(e.amount_ht!=null?fmt(+e.amount_ht):'--')+'</td>'+
-    '<td style="text-align:right">'+(e.tps!=null?fmt(+e.tps):'--')+'</td>'+
-    '<td style="text-align:right">'+(e.tvq!=null?fmt(+e.tvq):'--')+'</td>'+
-    '<td style="text-align:right;font-weight:bold">'+fmt(+e.amount_ttc)+'</td>'+
-    '<td style="text-align:center;color:'+(e.hasReceipt?'#2d7a3a':'#b83232')+'">'+(e.hasReceipt?'OK':'Manquant')+'</td>'+
-    (e.thumb?'<td><img src="'+e.thumb+'" style="max-height:48px;max-width:75px;border-radius:3px"></td>':'<td>--</td>')+
-    '</tr>';
+    var c=ci(e.category);var bg=e.isPersonal?'background:#f0eeff':e.visaStarred?'background:#fde8e8':'';
+    return '<tr style="'+bg+'"><td>'+h(fd(e.date))+'</td><td><strong>'+h(e.vendor||'')+'</strong>'+(e.isPersonal?' <span style="background:#e8e4ff;color:#3a2a9a;font-size:10px;padding:1px 5px;border-radius:3px">Perso</span>':'')+(e.notes?' <span style="font-size:11px;color:#999">'+h(e.notes)+'</span>':'')+'</td><td><span style="background:'+c.bg+';color:'+c.c+';padding:2px 6px;border-radius:3px;font-size:11px">'+h(e.category||'Autre')+'</span></td><td style="text-align:right">'+(e.amount_ht!=null?fmt(+e.amount_ht):'--')+'</td><td style="text-align:right">'+(e.tps!=null?fmt(+e.tps):'--')+'</td><td style="text-align:right">'+(e.tvq!=null?fmt(+e.tvq):'--')+'</td><td style="text-align:right;font-weight:bold">'+fmt(+e.amount_ttc)+'</td><td style="text-align:center;color:'+(e.hasReceipt?'#2d7a3a':'#b83232')+'">'+(e.hasReceipt?'OK':'Manquant')+'</td>'+(e.thumb?'<td><img src="'+e.thumb+'" style="max-height:48px;max-width:75px;border-radius:3px"></td>':'<td>--</td>')+'</tr>';
   }).join('');
-  var catRows=Object.entries(catT).sort(function(a,b){return b[1]-a[1];}).map(function(kv){
-    var c=ci(kv[0]);return '<tr><td><span style="background:'+c.bg+';color:'+c.c+';padding:2px 7px;border-radius:3px;font-size:12px">'+h(kv[0])+'</span></td><td style="text-align:right">'+fmt(kv[1])+'</td></tr>';
-  }).join('');
+  var catRows=Object.entries(catT).sort(function(a,b){return b[1]-a[1];}).map(function(kv){var c=ci(kv[0]);return '<tr><td><span style="background:'+c.bg+';color:'+c.c+';padding:2px 7px;border-radius:3px;font-size:12px">'+h(kv[0])+'</span></td><td style="text-align:right">'+fmt(kv[1])+'</td></tr>';}).join('');
   var pSection='';
-  if(perso.length>0){
-    pSection='<h2 style="font-size:15px;font-weight:normal;margin:2rem 0 .5rem;color:#3a2a9a;border-bottom:1px solid #ddd;padding-bottom:4px">Depenses personnelles a rembourser</h2>'+
-    '<table style="width:100%;border-collapse:collapse"><thead><tr style="background:#f0eeff"><th>Date</th><th>Fournisseur</th><th style="text-align:right">TTC</th></tr></thead><tbody>'+
-    perso.map(function(e){return'<tr><td>'+h(fd(e.date))+'</td><td>'+h(e.vendor||'')+'</td><td style="text-align:right;font-weight:bold">'+fmt(+e.amount_ttc)+'</td></tr>';}).join('')+
-    '<tr style="background:#e8e4ff"><td colspan="2"><strong>Total a rembourser</strong></td><td style="text-align:right;font-weight:bold">'+fmt(persoTotal)+'</td></tr></tbody></table>';
-  }
-  return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Rapport '+pLabel(ST.period)+'</title>'+
-  '<style>body{font-family:Georgia,serif;max-width:960px;margin:2rem auto;padding:0 1.5rem;color:#1a1a18;font-size:13px}h1{font-size:21px;font-weight:normal}h2{font-size:15px;font-weight:normal;margin:1.5rem 0 .5rem;border-bottom:1px solid #ddd;padding-bottom:4px}table{width:100%;border-collapse:collapse;margin-bottom:1rem}th{text-align:left;padding:6px 10px;background:#f7f7f5;border-bottom:2px solid #ddd;font-size:11px;text-transform:uppercase;font-weight:normal}td{padding:7px 10px;border-bottom:1px solid #eee;vertical-align:middle}.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:1rem 0}.mt{background:#f7f7f5;border-radius:8px;padding:.75rem 1rem}.ml{font-size:11px;color:#999;text-transform:uppercase;margin-bottom:4px}.mv{font-size:17px}@media print{body{max-width:100%}}</style></head><body>'+
-  '<div style="border-bottom:2px solid #1a6fbf;padding-bottom:12px;margin-bottom:1.5rem">'+
-  '<h1>Compte de depenses &mdash; '+pLabel(ST.period)+'</h1>'+
-  '<div style="font-size:12px;color:#999">P. Alexandre Gauthier &middot; Visa Desjardins ****5022 &middot; '+new Date().toLocaleDateString('fr-CA')+'</div></div>'+
-  '<div class="sg">'+
-  '<div class="mt"><div class="ml">Total TTC</div><div class="mv" style="font-weight:bold">'+fmt(bizTotal)+'</div></div>'+
-  '<div class="mt"><div class="ml">Transactions</div><div class="mv">'+biz.length+'</div></div>'+
-  '<div class="mt"><div class="ml">Recus</div><div class="mv" style="color:'+(miss>0?'#9a6200':'#2d7a3a')+'">'+(all.length-miss)+'/'+all.length+'</div></div>'+
-  (perso.length>0?'<div class="mt" style="background:#f0eeff"><div class="ml" style="color:#5242b8">A rembourser</div><div class="mv" style="color:#3a2a9a">'+fmt(persoTotal)+'</div></div>':'')+
-  '</div><h2>Repartition par poste budgetaire</h2><table><thead><tr><th>Poste</th><th style="text-align:right">Total TTC</th></tr></thead><tbody>'+catRows+'</tbody></table>'+
-  '<h2>Detail des transactions</h2><table><thead><tr><th>Date</th><th>Fournisseur</th><th>Categorie</th><th style="text-align:right">HT</th><th style="text-align:right">TPS</th><th style="text-align:right">TVQ</th><th style="text-align:right">TTC</th><th>Recu</th><th>Facture</th></tr></thead><tbody>'+rows+'</tbody>'+
-  '<tfoot><tr style="background:#f7f7f5"><td colspan="6"><strong>Total</strong></td><td style="text-align:right;font-weight:bold">'+fmt(total)+'</td><td></td><td></td></tr></tfoot></table>'+
-  pSection+'</body></html>';
+  if(perso.length>0){pSection='<h2>Depenses personnelles a rembourser</h2><table><thead><tr><th>Date</th><th>Fournisseur</th><th style="text-align:right">TTC</th></tr></thead><tbody>'+perso.map(function(e){return'<tr><td>'+h(fd(e.date))+'</td><td>'+h(e.vendor||'')+'</td><td style="text-align:right;font-weight:bold">'+fmt(+e.amount_ttc)+'</td></tr>';}).join('')+'<tr style="background:#e8e4ff"><td colspan="2"><strong>Total</strong></td><td style="text-align:right;font-weight:bold">'+fmt(persoTotal)+'</td></tr></tbody></table>';}
+  return '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Rapport '+pLabel(ST.period)+'</title><style>body{font-family:Georgia,serif;max-width:960px;margin:2rem auto;padding:0 1.5rem;color:#1a1a18;font-size:13px}h1{font-size:21px;font-weight:normal}h2{font-size:15px;font-weight:normal;margin:1.5rem 0 .5rem;border-bottom:1px solid #ddd;padding-bottom:4px}table{width:100%;border-collapse:collapse;margin-bottom:1rem}th{text-align:left;padding:6px 10px;background:#f7f7f5;border-bottom:2px solid #ddd;font-size:11px;text-transform:uppercase;font-weight:normal}td{padding:7px 10px;border-bottom:1px solid #eee;vertical-align:middle}.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:1rem 0}.mt{background:#f7f7f5;border-radius:8px;padding:.75rem 1rem}.ml{font-size:11px;color:#999;text-transform:uppercase;margin-bottom:4px}.mv{font-size:17px}@media print{body{max-width:100%}}</style></head><body>'+
+  '<div style="border-bottom:2px solid #1a6fbf;padding-bottom:12px;margin-bottom:1.5rem"><h1>Compte de depenses &mdash; '+pLabel(ST.period)+'</h1><div style="font-size:12px;color:#999">P. Alexandre Gauthier &middot; Visa Desjardins ****5022 &middot; '+new Date().toLocaleDateString('fr-CA')+'</div></div>'+
+  '<div class="sg"><div class="mt"><div class="ml">Total TTC</div><div class="mv" style="font-weight:bold">'+fmt(bizTotal)+'</div></div><div class="mt"><div class="ml">Transactions</div><div class="mv">'+biz.length+'</div></div><div class="mt"><div class="ml">Recus</div><div class="mv" style="color:'+(miss>0?'#9a6200':'#2d7a3a')+'">'+(all.length-miss)+'/'+all.length+'</div></div>'+(perso.length>0?'<div class="mt" style="background:#f0eeff"><div class="ml" style="color:#5242b8">A rembourser</div><div class="mv" style="color:#3a2a9a">'+fmt(persoTotal)+'</div></div>':'')+'</div>'+
+  '<h2>Repartition par poste budgetaire</h2><table><thead><tr><th>Poste</th><th style="text-align:right">Total TTC</th></tr></thead><tbody>'+catRows+'</tbody></table>'+
+  '<h2>Detail des transactions</h2><table><thead><tr><th>Date</th><th>Fournisseur</th><th>Categorie</th><th style="text-align:right">HT</th><th style="text-align:right">TPS</th><th style="text-align:right">TVQ</th><th style="text-align:right">TTC</th><th>Recu</th><th>Facture</th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr style="background:#f7f7f5"><td colspan="6"><strong>Total</strong></td><td style="text-align:right;font-weight:bold">'+fmt(total)+'</td><td></td><td></td></tr></tfoot></table>'+pSection+'</body></html>';
 }
 function openSend(){var all=ST.expenses.filter(function(e){return e.period===ST.period;});_md={view:'send',body:generateMailBody(all)};ST.modal='send';render();}
-function doOpenMail(){
-  var emailEl=document.getElementById('adj-email');var email=emailEl?emailEl.value:'';
-  if(email){ST.adjEmail=email;save();}
-  var subj=encodeURIComponent('Compte de depenses - '+pLabel(ST.period));
-  var bd=encodeURIComponent(_md?_md.body:'');
-  window.location.href='mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+bd;
+function doOpenMail(){var emailEl=document.getElementById('adj-email');var email=emailEl?emailEl.value:'';if(email){ST.adjEmail=email;save();}var subj=encodeURIComponent('Compte de depenses - '+pLabel(ST.period));var bd=encodeURIComponent(_md?_md.body:'');window.location.href='mailto:'+encodeURIComponent(email)+'?subject='+subj+'&body='+bd;}
+function doDownloadReport(){var all=ST.expenses.filter(function(e){return e.period===ST.period;});var html=generateReportHTML(all);var blob=new Blob([html],{type:'text/html'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='rapport-'+ST.period+'.html';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);}
+
+function importPreloaded(){
+  var txs=[
+    {date:'2026-01-04',vendor:'Apple.com/Bill',amount:21.83,starred:true,category:'Logiciels / Abo.'},
+    {date:'2026-01-07',vendor:'Shell C12331 Chicoutimi',amount:21.81,starred:false,category:'Carburant / Essence'},
+    {date:'2026-01-09',vendor:'ITCloud Trois-Rivieres',amount:15.77,starred:false,category:'Logiciels / Abo.'},
+    {date:'2026-01-09',vendor:'ITCloud Trois-Rivieres',amount:1346.36,starred:false,category:'Logiciels / Abo.'},
+    {date:'2026-01-10',vendor:'CMBuilder Cadmakers Burnaby',amount:614.25,starred:false,category:'Equipements'},
+    {date:'2026-01-14',vendor:'SP Contech Batiment Mont-Royal',amount:477.15,starred:true,category:'Equipements'},
+    {date:'2026-01-14',vendor:'Apple.com/Bill',amount:51.68,starred:true,category:'Logiciels / Abo.'},
+    {date:'2026-01-16',vendor:'Golf Virtuel Saguenay',amount:72.82,starred:false,category:'Autre'},
+    {date:'2026-01-20',vendor:'Microsoft G136277881',amount:22.94,starred:false,category:'Logiciels / Abo.'},
+    {date:'2026-01-21',vendor:'UConnect Services CAD Windsor',amount:13.99,starred:false,category:'Logiciels / Abo.'},
+    {date:'2026-01-25',vendor:'Canva I04772-27415505',amount:39.00,starred:false,category:'Logiciels / Abo.'},
+    {date:'2026-01-27',vendor:'ITCloud Trois-Rivieres',amount:30.22,starred:false,category:'Logiciels / Abo.'},
+    {date:'2026-01-27',vendor:'Cegep de Jonquiere',amount:7.00,starred:true,category:'Formation'},
+    {date:'2026-01-28',vendor:'McDonalds 40333 Chicoutimi',amount:18.71,starred:false,category:'Repas / Restaurant'},
+    {date:'2026-01-30',vendor:'Apple.com/Bill',amount:37.93,starred:true,category:'Logiciels / Abo.'}
+  ];
+  var sel=new Set();for(var i=0;i<txs.length;i++)sel.add(i);
+  _md={view:'visa',txs:txs,sel:sel};ST.modal='visa';ST.period='2026-01';render();
 }
-function doDownloadReport(){
-  var all=ST.expenses.filter(function(e){return e.period===ST.period;});
-  var html=generateReportHTML(all);
-  var blob=new Blob([html],{type:'text/html'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');a.href=url;a.download='rapport-'+ST.period+'.html';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-}
-// ── RENDER ──
+
 function render(){
   var app=document.getElementById('app');
   if(ST.modal==='scan-tip'){app.innerHTML=vScanTip();return;}
@@ -558,6 +493,7 @@ function render(){
   if(ST.modal==='visa'){app.innerHTML=vVisa();return;}
   if(ST.modal==='send'){app.innerHTML=vSend();return;}
   if(ST.modal==='sync'){app.innerHTML=vSync();return;}
+  if(ST.modal==='link-receipt'){app.innerHTML=vLinkReceipt();return;}
   vMain();
 }
 
@@ -571,7 +507,6 @@ function vMain(){
     if(ST.filter==='personal')return!!e.isPersonal;
     return true;
   }).sort(function(a,b){return(a.date||'').localeCompare(b.date||'');});
-
   var biz=all.filter(function(e){return!e.isPersonal;});
   var perso=all.filter(function(e){return e.isPersonal;});
   var totTTC=biz.reduce(function(s,e){return s+(+e.amount_ttc||0);},0);
@@ -582,37 +517,42 @@ function vMain(){
   var persoAmt=perso.reduce(function(s,e){return s+(+e.amount_ttc||0);},0);
   var catT={};biz.forEach(function(e){var c=e.category||'Autre';catT[c]=(catT[c]||0)+(+e.amount_ttc||0);});
   var maxC=Math.max.apply(null,[.01].concat(Object.values(catT)));
-  var periods=[...new Set(ST.expenses.map(function(e){return e.period;}))].filter(function(p){return p!==ST.period;}).sort().reverse();
+  var periods=Array.from(new Set(ST.expenses.map(function(e){return e.period;}))).filter(function(p){return p!==ST.period;}).sort().reverse();
 
   var rows=shown.map(function(e){
     var c=ci(e.category);var cls=e.isPersonal?'personal':e.visaStarred?'starred':'';
+    var mRcpt=e.matchedReceiptId?ST.expenses.find(function(x){return x.id===e.matchedReceiptId;}):null;
+    var rcptCell;
+    if(e.source==='visa_import'&&e.hasReceipt&&mRcpt){
+      rcptCell='<td style="white-space:nowrap"><span style="color:var(--green);display:inline-flex;align-items:center;gap:5px"><span class="rcpt-dot" style="background:#2d7a3a"></span>OK '+(mRcpt.thumb?'<img src="'+mRcpt.thumb+'" onclick="openEdit(\''+mRcpt.id+'\')" style="height:26px;width:38px;object-fit:cover;border-radius:3px;border:1px solid #2d7a3a;cursor:pointer;vertical-align:middle" title="Voir la facture">':'')+'</span></td>';
+    } else if(e.source==='visa_import'&&!e.hasReceipt){
+      rcptCell='<td style="cursor:pointer" onclick="toggleRcpt(\''+e.id+'\')"><span style="color:var(--red)"><span class="rcpt-dot" style="background:#b83232"></span>Manquant</span></td>';
+    } else {
+      rcptCell='<td style="cursor:pointer" onclick="toggleRcpt(\''+e.id+'\')"><span style="color:'+(e.hasReceipt?'var(--green)':'var(--red)')+'"><span class="rcpt-dot" style="background:'+(e.hasReceipt?'#2d7a3a':'#b83232')+'"></span>'+(e.hasReceipt?'OK':'Manquant')+'</span></td>';
+    }
     return '<tr class="'+cls+'">'+
       '<td style="color:var(--text3);white-space:nowrap;font-size:12px">'+(e.visaStarred?'<span class="star-flag">\u2605</span>':'')+h(fd(e.date))+'</td>'+
       '<td><div>'+h(e.vendor||'\u2014')+(e.isPersonal?'<span class="badge-perso">Perso - rembourser</span>':'')+'</div>'+(e.notes?'<div style="font-size:11px;color:var(--text3)">'+h(e.notes)+'</div>':'')+'</td>'+
       '<td><span class="badge" style="background:'+c.bg+';color:'+c.c+'">'+h(e.category||'Autre')+'</span></td>'+
-      '<td style="cursor:pointer" onclick="toggleRcpt(\''+e.id+'\')">'+'<span style="color:'+(e.hasReceipt?'var(--green)':'var(--red)')+'">'+'<span class="rcpt-dot" style="background:'+(e.hasReceipt?'#2d7a3a':'#b83232')+'"></span>'+(e.hasReceipt?'OK':'Manquant')+'</span></td>'+
+      rcptCell+
       '<td class="amt'+(+e.amount_ttc>=200?' big':'')+'">'+fmt(+e.amount_ttc)+'</td>'+
       '<td class="amt-sub">'+(e.amount_ht!=null?fmt(+e.amount_ht):'\u2014')+'</td>'+
-      '<td style="white-space:nowrap"><button class="btn" style="font-size:11px;padding:3px 9px;margin-right:3px" onclick="openEdit(\''+e.id+'\')">Modifier</button>'+'<button class="btn-ghost" onclick="if(confirm(\'Supprimer ?\'))delE(\''+e.id+'\').then(render)">\u2715</button></td></tr>';
+      '<td style="white-space:nowrap">'+
+        (e.source==='visa_import'&&!e.hasReceipt?'<button class="btn-lier" onclick="openLinkReceipt(\''+e.id+'\')">Lier facture</button>':'')+
+        '<button class="btn" style="font-size:11px;padding:3px 9px;margin-right:3px" onclick="openEdit(\''+e.id+'\')">Modifier</button>'+
+        '<button class="btn-ghost" onclick="if(confirm(\'Supprimer ?\'))delE(\''+e.id+'\').then(render)">\u2715</button>'+
+      '</td></tr>';
   }).join('');
 
   var catBars=Object.entries(catT).sort(function(a,b){return b[1]-a[1];}).map(function(kv){
-    var c=ci(kv[0]);
-    return '<div class="bar-row"><div style="width:185px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span class="badge" style="background:'+c.bg+';color:'+c.c+'">'+h(kv[0])+'</span></div><div class="bar-bg"><div class="bar-fill" style="width:'+(kv[1]/maxC*100).toFixed(1)+'%"></div></div><div style="width:85px;text-align:right;font-size:12px">'+fmt(kv[1])+'</div></div>';
+    var c=ci(kv[0]);return '<div class="bar-row"><div style="width:185px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><span class="badge" style="background:'+c.bg+';color:'+c.c+'">'+h(kv[0])+'</span></div><div class="bar-bg"><div class="bar-fill" style="width:'+(kv[1]/maxC*100).toFixed(1)+'%"></div></div><div style="width:85px;text-align:right;font-size:12px">'+fmt(kv[1])+'</div></div>';
   }).join('');
 
-  var perTags=periods.map(function(p){return '<button class="period-tag" onclick="ST.period=\''+p+'\';render()">'+pLabel(p)+'</button>';}).join('');
-  var tableHTML=shown.length===0?
-    '<div class="empty">'+(all.length===0?'Aucune d\u00e9pense pour '+pLabel(ST.period)+'.':'Aucune d\u00e9pense ne correspond au filtre.')+'</div>':
-    '<table><thead><tr><th>Date</th><th>Fournisseur</th><th>Cat\u00e9gorie</th><th>Re\u00e7u</th><th style="text-align:right">TTC</th><th style="text-align:right">Avant taxes</th><th></th></tr></thead><tbody>'+rows+'</tbody>'+
-    '<tfoot><tr class="tfoot-row"><td colspan="4" style="color:var(--text2)">Total affich\u00e9</td><td class="amt">'+fmt(shown.reduce(function(s,e){return s+(+e.amount_ttc||0);},0))+'</td><td></td><td></td></tr></tfoot></table>';
-
-  // Sync status dot
   var syncDot='#ccc',syncTxt='';
   if(SYNC.status==='ok'){syncDot='#2d7a3a';syncTxt='\u2713 '+SYNC.msg;}
   else if(SYNC.status==='syncing'){syncDot='#1a6fbf';syncTxt='\u21bb '+SYNC.msg;}
   else if(SYNC.status==='error'){syncDot='#b83232';syncTxt='\u26a0 '+SYNC.msg;}
-  else if(SYNC.status==='no-config'){syncDot='#ccc';syncTxt='Synchronisation non configur\u00e9e';}
+  else if(SYNC.status==='no-config'){syncDot='#ccc';syncTxt='Sync non configure';}
 
   app.innerHTML='<div class="wrap">'+
   '<div class="top-bar">'+
@@ -620,7 +560,7 @@ function vMain(){
     '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'+
       '<div class="period-nav"><button class="pnav-btn" onclick="ST.period=prevP(ST.period);render()">\u2039</button><span class="period-lbl">'+pLabel(ST.period)+'</span><button class="pnav-btn" onclick="ST.period=nextP(ST.period);render()">\u203a</button></div>'+
       (all.length>0?'<button class="btn-send" onclick="openSend()">\u2709 Adjointe</button>':'')+
-      '<button class="btn" style="padding:6px 10px;font-size:12px" onclick="ST.modal=\'sync\';_md={};render()">\u2601 Sync</button>'+
+      '<button class="btn" style="padding:6px 10px;font-size:12px" onclick="ST.modal=\'sync\';_md={};render()">\u2699 Param\u00e8tres</button>'+
     '</div>'+
   '</div>'+
   '<div id="sync-bar" class="sync-bar"><span class="sync-dot" style="background:'+syncDot+'"></span>'+syncTxt+'</div>'+
@@ -634,12 +574,13 @@ function vMain(){
   '<div class="dz" id="dz">'+
     (ST.proc?'<span class="spinner"></span><span style="color:var(--text2)">'+ST.msg+'</span>':
     '<div style="font-size:15px;margin-bottom:5px">Ajouter une facture</div>'+
-    '<div style="font-size:12px;color:var(--text3);margin-bottom:4px">Glissez un fichier ici, ou choisissez une option</div>'+
+    '<div style="font-size:12px;color:var(--text3);margin-bottom:4px">Glissez un fichier ou courriel .eml ici, ou choisissez une option</div>'+
     '<div class="dz-btns">'+
       '<button class="btn-scan" onclick="ST.modal=\'scan-tip\';_md={};render()">\uD83D\uDCF7 Scanner</button>'+
       '<button class="btn" onclick="document.getElementById(\'file-lib\').click()">\uD83D\uDDBC Photo / PDF</button>'+
       '<button class="btn-visa" onclick="document.getElementById(\'file-visa\').click()">\u2605 Rapport VISA</button>'+
-      '<button class="btn" onclick="ST.modal=\'email\';_md={};render()">\u2709 Courriel</button>'+
+      '<button class="btn" onclick="document.getElementById(\'file-eml\').click()">\uD83D\uDCE7 Courriel .eml</button>'+
+      '<button class="btn" onclick="ST.modal=\'email\';_md={};render()">\u270F Coller texte</button>'+
       '<button class="btn" onclick="openAdd()">+ Manuel</button>'+
     '</div>')+
   '</div>'+
@@ -650,59 +591,30 @@ function vMain(){
     '<button class="pill '+(ST.filter==='ok'?'active':'')+'" onclick="ST.filter=\'ok\';render()">Re\u00e7us OK</button>'+
     (starred>0?'<button class="pill amber '+(ST.filter==='starred'?'active':'')+'" onclick="ST.filter=\'starred\';render()">\u2605 \u00c9toil\u00e9s ('+starred+')</button>':'')+
     (perso.length>0?'<button class="pill purple '+(ST.filter==='personal'?'active':'')+'" onclick="ST.filter=\'personal\';render()">\u267B Perso ('+perso.length+')</button>':'')+
-  '</div>'+tableHTML+
+  '</div>'+
+  (shown.length===0?'<div class="empty">'+(all.length===0?'Aucune d\u00e9pense pour '+pLabel(ST.period)+'.':'Aucune d\u00e9pense ne correspond au filtre.')+'</div>':
+    '<table><thead><tr><th>Date</th><th>Fournisseur</th><th>Cat\u00e9gorie</th><th>Re\u00e7u</th><th style="text-align:right">TTC</th><th style="text-align:right">Avant taxes</th><th></th></tr></thead><tbody>'+rows+'</tbody><tfoot><tr class="tfoot-row"><td colspan="4" style="color:var(--text2)">Total affich\u00e9</td><td class="amt">'+fmt(shown.reduce(function(s,e){return s+(+e.amount_ttc||0);},0))+'</td><td></td><td></td></tr></tfoot></table>')+
   (Object.keys(catT).length>0?'<div class="section-title">R\u00e9partition par cat\u00e9gorie</div>'+catBars:'')+
-  (periods.length>0?'<div class="section-title">Autres p\u00e9riodes</div><div class="tag-row">'+perTags+'</div>':'')+
+  (periods.length>0?'<div class="section-title">Autres p\u00e9riodes</div><div class="tag-row">'+periods.map(function(p){return'<button class="period-tag" onclick="ST.period=\''+p+'\';render()">'+pLabel(p)+'</button>';}).join('')+'</div>':'')+
   '</div>';
 
   var dz=document.getElementById('dz');
   if(dz&&!ST.proc){
     dz.addEventListener('dragover',function(e){e.preventDefault();dz.classList.add('drag-over');},{passive:false});
     dz.addEventListener('dragleave',function(){dz.classList.remove('drag-over');});
-    dz.addEventListener('drop',function(e){e.preventDefault();dz.classList.remove('drag-over');handleRcpt(Array.from(e.dataTransfer.files),'upload');});
+    dz.addEventListener('drop',function(ev){
+      ev.preventDefault();dz.classList.remove('drag-over');
+      var files=Array.from(ev.dataTransfer.files);
+      var emls=files.filter(function(f){return f.name.toLowerCase().endsWith('.eml')||f.name.toLowerCase().endsWith('.msg');});
+      var others=files.filter(function(f){return!f.name.toLowerCase().endsWith('.eml')&&!f.name.toLowerCase().endsWith('.msg');});
+      emls.forEach(function(f){handleEml(f);});
+      if(others.length>0)handleRcpt(others,'upload');
+    });
   }
   document.getElementById('file-scan').onchange=function(e){handleRcpt(Array.from(e.target.files),'scan');e.target.value='';};
   document.getElementById('file-lib').onchange=function(e){handleRcpt(Array.from(e.target.files),'upload');e.target.value='';};
   document.getElementById('file-visa').onchange=function(e){handleVisa(e.target.files[0]);e.target.value='';};
-}
-
-function vSync(){
-  var isConfigured=GH.token&&GH.owner;
-  var statusColor='#ccc',statusText='Non configur\u00e9';
-  if(SYNC.status==='ok'){statusColor='#2d7a3a';statusText='\u2713 '+SYNC.msg;}
-  else if(SYNC.status==='syncing'){statusColor='#1a6fbf';statusText='\u21bb '+SYNC.msg;}
-  else if(SYNC.status==='error'){statusColor='#b83232';statusText='\u26a0 '+SYNC.msg;}
-  return '<div class="modal-wrap">'+
-  '<div class="modal-header"><h1 style="font-size:18px">\u2601 Synchronisation PC \u2194 iPhone</h1>'+
-  '<button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
-  '<div class="gh-status" style="background:var(--bg2)"><span class="sync-dot" style="background:'+statusColor+'"></span><span>'+statusText+'</span></div>'+
-  '<div class="step-box" style="margin-top:12px"><div class="step-title">Clé API Anthropic (requis pour IA)</div>'+
-    '<div class="step-item">1. Va sur <strong>console.anthropic.com</strong> → connexion</div>'+
-    '<div class="step-item">2. Menu gauche → <strong>API Keys</strong> → <strong>Create Key</strong></div>'+
-    '<div class="step-item">3. Copie la clé (commence par sk-ant-...)</div>'+
-    '<div class="step-item">4. Colle-la dans le champ ci-dessous → Sauvegarder</div>'+
-    '<div class="step-item" style="color:var(--amber)">⚠ La clé est payée à l’usage (~0,01$ par scan)</div>'+
-  '</div>'+
-  '<div class="field" style="margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--border)">'+
-    '<label style="font-size:13px;font-weight:bold;color:var(--text);margin-bottom:8px;display:block">⚙ Clé API Anthropic (pour IA)</label>'+
-    '<div style="font-size:12px;color:var(--text2);margin-bottom:8px">Obtiens ta clé sur <strong>console.anthropic.com</strong> → API Keys → Create Key</div>'+
-    '<input id="ant-key" type="password" class="token-input" value="'+h(getApiKey())+'" placeholder="sk-ant-api03-...">'+
-    '<button id=\"ant-save-btn\" onclick=\"saveApiKeyFromUI()\" style=\"margin-top:6px;width:100%;padding:6px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:12px;cursor:pointer\">Sauvegarder la clé</button>'+
-  '</div>'+
-  '<div class="field" style="margin-bottom:8px"><label style="font-size:13px;font-weight:bold;color:var(--text);margin-bottom:6px;display:block">☁ Synchronisation GitHub (optionnel)</label>'+
-    '<div style="font-size:12px;color:var(--text2);margin-bottom:8px">Pour synchroniser les données entre PC et iPhone</div>'+
-  '</div>'+
-  '<div class="field"><label>Token GitHub (ghp_...)</label><input id="gh-token" type="password" class="token-input" value="'+h(GH.token)+'" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"></div>'+
-  '<div class="grid2">'+
-    '<div class="field" style="margin:0"><label>Nom d\u2019utilisateur GitHub</label><input id="gh-owner" value="'+h(GH.owner)+'" placeholder="pagau-cg"></div>'+
-    '<div class="field" style="margin:0"><label>Nom du repo</label><input id="gh-repo" value="'+h(GH.repo||'depenses')+'" placeholder="depenses"></div>'+
-  '</div>'+
-  '<div style="font-size:11px;color:var(--text3);margin-bottom:12px;margin-top:4px">Le token est sauvegard\u00e9 localement sur cet appareil. \u00c0 r\u00e9p\u00e9ter sur chaque appareil (PC et iPhone).</div>'+
-  (isConfigured?'<button class="btn" style="width:100%;margin-bottom:8px" onclick="manualSync()">\u21bb R\u00e9synchroniser maintenant</button>':'')+
-  '<div class="modal-footer">'+
-    '<button class="btn" onclick="closeModal()" style="flex:1">Fermer</button>'+
-    '<button id="gh-save-btn" class="btn-primary" onclick="saveGHSettings()" style="flex:2">Enregistrer et connecter</button>'+
-  '</div></div>';
+  document.getElementById('file-eml').onchange=function(e){Array.from(e.target.files).forEach(function(f){handleEml(f);});e.target.value='';};
 }
 
 function vScanTip(){
@@ -711,7 +623,7 @@ function vScanTip(){
   '<div class="step-box"><div class="step-title">Option 1 \u2014 Scanner de documents (meilleure qualit\u00e9)</div>'+
     '<div class="step-item">1. Appuie sur le bouton ci-dessous</div>'+
     '<div class="step-item">2. Dans le menu iOS \u2192 choisis <strong>Fichiers</strong></div>'+
-    '<div class="step-item">3. En bas de l\u2019\u00e9cran \u2192 <strong>Scanner des documents</strong></div>'+
+    '<div class="step-item">3. En bas \u2192 <strong>Scanner des documents</strong></div>'+
     '<div class="step-item">4. Scanne \u2192 <strong>Conserver le scan</strong></div>'+
   '</div>'+
   '<div class="step-box"><div class="step-title">Option 2 \u2014 Photo directe</div>'+
@@ -719,23 +631,21 @@ function vScanTip(){
     '<div class="step-item">2. Choisis <strong>Prendre une photo</strong></div>'+
   '</div>'+
   '<div class="modal-footer" style="flex-direction:column;gap:8px">'+
-  '<button class="btn-scan" style="width:100%;padding:12px;font-size:14px" onclick="closeModal();document.getElementById(\'file-scan\').click()">\uD83D\uDCF7 Ouvrir l\'appareil photo / Fichiers</button>'+
+  '<button class="btn-scan" style="width:100%;padding:12px;font-size:14px" onclick="closeModal();document.getElementById(\'file-scan\').click()">\uD83D\uDCF7 Ouvrir appareil photo / Fichiers</button>'+
   '<button class="btn" onclick="closeModal()" style="width:100%">Annuler</button>'+
   '</div></div>';
 }
+
 function vVisaErr(){
-  var raw=_md&&_md.raw?_md.raw:'';
-  var errMsg=_md&&_md.errMsg?_md.errMsg:'';
-  var hasRaw=raw.length>10;
+  var raw=_md&&_md.raw?_md.raw:'';var errMsg=_md&&_md.errMsg?_md.errMsg:'';
   return '<div class="modal-wrap" style="max-width:580px">'+
   '<div class="modal-header"><h1 style="font-size:18px">Erreur VISA</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
   '<div class="alert-amber">'+h(errMsg||'Impossible de lire le rapport.')+'</div>'+
-  (hasRaw?'<div style="font-size:12px;color:var(--text2);margin-bottom:6px">R\u00e9ponse re\u00e7ue de Claude :</div>'+
-    '<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;font-size:11px;max-height:150px;overflow-y:auto;white-space:pre-wrap;font-family:monospace;margin-bottom:12px;color:var(--text2)">'+h(raw.substring(0,600))+'</div>':'')+
+  (raw.length>10?'<div style="font-size:12px;color:var(--text2);margin-bottom:6px">R\u00e9ponse de Claude :</div><div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px;font-size:11px;max-height:150px;overflow-y:auto;white-space:pre-wrap;font-family:monospace;margin-bottom:12px;color:var(--text2)">'+h(raw.substring(0,600))+'</div>':'')+
   '<div class="step-box"><div class="step-title">Solutions :</div>'+
     '<div class="step-item">\u2022 Envoie la page 1 seulement (celle avec les transactions)</div>'+
-    '<div class="step-item">\u2022 Essaie une photo JPG plut\u00f4t que PDF (meilleure compatibilit\u00e9)</div>'+
-    '<div class="step-item">\u2022 V\u00e9rifie que tout le texte est net et lisible</div>'+
+    '<div class="step-item">\u2022 Essaie une photo JPG plut\u00f4t que PDF</div>'+
+    '<div class="step-item">\u2022 Texte net, pas d\u2019ombres</div>'+
   '</div>'+
   '<div class="modal-footer">'+
     '<button class="btn" onclick="closeModal()" style="flex:1">Fermer</button>'+
@@ -749,35 +659,30 @@ function vForm(){
   var chips=CATS.map(function(c){return '<button class="cat-chip'+(e.category===c.label?' selected':'')+'" data-cat="'+h(c.label)+'" style="background:'+c.bg+';color:'+c.c+'" onclick="selCat(\''+h(c.label)+'\')">'+h(c.label)+'</button>';}).join('');
   return '<div class="modal-wrap">'+
   '<div class="modal-header"><h1 style="font-size:18px">'+(isEdit?'Modifier':'Nouvelle d\u00e9pense')+'</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
-  (isAI?'<div class="alert-green">Donn\u00e9es extraites automatiquement.<span class="ai-badge">IA</span></div>':'')+
+  (isAI?'<div class="alert-green">Donn\u00e9es extraites automatiquement \u2014 v\u00e9rifiez avant d\u2019enregistrer.<span class="ai-badge">IA</span></div>':'')+
   (e.thumb?'<img class="thumb-form" src="'+e.thumb+'">':'')+
   '<div class="field"><label>Fournisseur</label><input id="f-vendor" value="'+h(e.vendor||'')+'" placeholder="Nom du fournisseur"></div>'+
-  '<div class="grid2" style="margin-bottom:12px"><div class="field" style="margin:0"><label>Date</label><input id="f-date" type="date" value="'+h(e.date||'')+'"></div>'+
-  '<div class="field" style="margin:0"><label>Montant TTC</label><input id="f-amount_ttc" type="number" step="0.01" min="0" value="'+h(e.amount_ttc||'')+'" placeholder="0.00"></div></div>'+
-  '<div class="tax-box"><div class="tax-title">D\u00e9tail des taxes (optionnel)</div><div class="grid3">'+
-    '<div class="field" style="margin:0"><label>Avant taxes (HT)</label><input id="f-amount_ht" type="number" step="0.01" min="0" value="'+h(e.amount_ht||'')+'" placeholder="0.00"></div>'+
-    '<div class="field" style="margin:0"><label>TPS 5%</label><input id="f-tps" type="number" step="0.01" min="0" value="'+h(e.tps||'')+'" placeholder="0.00"></div>'+
-    '<div class="field" style="margin:0"><label>TVQ 9.975%</label><input id="f-tvq" type="number" step="0.01" min="0" value="'+h(e.tvq||'')+'" placeholder="0.00"></div>'+
-  '</div></div>'+
+  '<div class="grid2" style="margin-bottom:12px"><div class="field" style="margin:0"><label>Date</label><input id="f-date" type="date" value="'+h(e.date||'')+'"></div><div class="field" style="margin:0"><label>Montant TTC</label><input id="f-amount_ttc" type="number" step="0.01" min="0" value="'+h(e.amount_ttc||'')+'" placeholder="0.00"></div></div>'+
+  '<div class="tax-box"><div class="tax-title">D\u00e9tail des taxes (optionnel)</div><div class="grid3"><div class="field" style="margin:0"><label>Avant taxes (HT)</label><input id="f-amount_ht" type="number" step="0.01" min="0" value="'+h(e.amount_ht||'')+'" placeholder="0.00"></div><div class="field" style="margin:0"><label>TPS 5%</label><input id="f-tps" type="number" step="0.01" min="0" value="'+h(e.tps||'')+'" placeholder="0.00"></div><div class="field" style="margin:0"><label>TVQ 9.975%</label><input id="f-tvq" type="number" step="0.01" min="0" value="'+h(e.tvq||'')+'" placeholder="0.00"></div></div></div>'+
   '<div class="field"><label>Cat\u00e9gorie'+(isAI?'<span class="ai-badge">IA</span>':'')+'</label><div class="cat-grid">'+chips+'</div></div>'+
   '<div class="field"><label>Notes</label><input id="f-notes" value="'+h(e.notes||'')+'" placeholder="D\u00e9tails optionnels..."></div>'+
   '<div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><input id="f-rcpt" type="checkbox"'+(e.hasReceipt?' checked':'')+' style="width:16px;height:16px;padding:0"><label for="f-rcpt" style="font-size:13px;margin:0;cursor:pointer">Re\u00e7u disponible</label></div>'+
-  '<div class="perso-box"><div style="display:flex;align-items:flex-start;gap:8px"><input id="f-perso" type="checkbox"'+(e.isPersonal?' checked':'')+' style="width:16px;height:16px;padding:0;margin-top:2px;flex-shrink:0">'+
-  '<label for="f-perso" style="font-size:13px;margin:0;color:var(--purple);cursor:pointer;line-height:1.5">D\u00e9pense personnelle (erreur de carte) \u2014 \u00e0 rembourser sur la paye</label></div></div>'+
+  '<div class="perso-box"><div style="display:flex;align-items:flex-start;gap:8px"><input id="f-perso" type="checkbox"'+(e.isPersonal?' checked':'')+' style="width:16px;height:16px;padding:0;margin-top:2px;flex-shrink:0"><label for="f-perso" style="font-size:13px;margin:0;color:var(--purple);cursor:pointer;line-height:1.5">D\u00e9pense personnelle (erreur de carte) \u2014 \u00e0 rembourser sur la paye</label></div></div>'+
   '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button><button class="btn-primary" onclick="saveForm()" style="flex:2">'+(isEdit?'Enregistrer':'Ajouter')+'</button></div></div>';
 }
+
 function attachFE(){
-  ['vendor','date','amount_ttc','amount_ht','tps','tvq','notes'].forEach(function(f){
-    var el=document.getElementById('f-'+f);if(el)el.addEventListener('input',function(){if(_md&&_md.expense)_md.expense[f]=this.value;});
-  });
+  ['vendor','date','amount_ttc','amount_ht','tps','tvq','notes'].forEach(function(f){var el=document.getElementById('f-'+f);if(el)el.addEventListener('input',function(){if(_md&&_md.expense)_md.expense[f]=this.value;});});
 }
+
 function vEmail(){
   return '<div class="modal-wrap">'+
-  '<div class="modal-header"><h1 style="font-size:18px">Facture par courriel</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
+  '<div class="modal-header"><h1 style="font-size:18px">Coller texte de courriel</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
   '<p style="font-size:13px;color:var(--text2);margin-bottom:12px">Copiez-collez le texte du courriel de confirmation.</p>'+
-  '<div class="field"><textarea id="email-txt" rows="10" placeholder="Collez ici..."></textarea></div>'+
-  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button><button class="btn-primary" onclick="handleEmail()" style="flex:2">Extraire</button></div></div>';
+  '<div class="field"><textarea id="email-txt" rows="10" placeholder="Collez ici le texte du courriel..."></textarea></div>'+
+  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button><button class="btn-primary" onclick="handleEmail()" style="flex:2">Extraire les donn\u00e9es</button></div></div>';
 }
+
 function vVisa(){
   if(!_md||!_md.txs)return'';
   var txs=_md.txs;var flagged=txs.filter(function(t){return t.starred;}).length;
@@ -793,9 +698,32 @@ function vVisa(){
   (flagged>0?'<div class="alert-amber">\u2605 '+flagged+' transaction'+(flagged>1?'s':'')+' sans re\u00e7u (admin).</div>':'')+
   '<p style="font-size:12px;color:var(--text3);margin-bottom:10px">'+txs.length+' transactions. D\u00e9cochez les exclusions.</p>'+
   '<div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.1rem;max-height:55vh;overflow-y:auto">'+rows+'</div>'+
-  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button>'+
-  '<button class="btn-primary" id="vcnt" onclick="importVisa()" style="flex:2">Importer '+_md.sel.size+' transaction'+(_md.sel.size>1?'s':'')+'</button></div></div>';
+  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button><button class="btn-primary" id="vcnt" onclick="importVisa()" style="flex:2">Importer '+_md.sel.size+' transaction'+(_md.sel.size>1?'s':'')+'</button></div></div>';
 }
+
+function vLinkReceipt(){
+  if(!_md||!_md.visaId)return'';
+  var visa=ST.expenses.find(function(e){return e.id===_md.visaId;});if(!visa)return'';
+  var receipts=_md.receipts||[];
+  var rows=receipts.length===0?
+    '<div class="empty" style="padding:1.5rem">Aucune facture disponible \u2014 scannez-la d\u2019abord.</div>':
+    receipts.map(function(r){
+      var c=ci(r.category);
+      return '<div class="link-row" onclick="doLinkReceipt(\''+_md.visaId+'\',\''+r.id+'\')">'+
+        (r.thumb?'<img src="'+r.thumb+'" style="width:50px;height:36px;object-fit:cover;border-radius:4px;border:1px solid var(--border);flex-shrink:0">':'<div style="width:50px;height:36px;background:var(--bg3);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--text3)">PDF</div>')+
+        '<div style="flex:1"><div style="font-size:13px;font-weight:500">'+h(r.vendor||'\u2014')+'</div>'+
+        '<div style="font-size:11px;color:var(--text3)">'+h(fd(r.date))+' \u00b7 <span class="badge" style="background:'+c.bg+';color:'+c.c+'">'+h(r.category||'Autre')+'</span></div></div>'+
+        '<div style="font-weight:500;font-size:13px;white-space:nowrap">'+fmt(+r.amount_ttc)+'</div>'+
+        '<div style="color:var(--blue);font-size:12px;padding:4px 8px;border:1px solid rgba(26,111,191,.4);border-radius:5px;white-space:nowrap">Lier</div>'+
+        '</div>';
+    }).join('');
+  return '<div class="modal-wrap" style="max-width:520px">'+
+  '<div class="modal-header"><div><h1 style="font-size:18px">Lier une facture</h1><div style="font-size:12px;color:var(--text3);margin-top:2px">'+h(fd(visa.date))+' \u00b7 '+h(visa.vendor||'')+' \u00b7 '+fmt(+visa.amount_ttc)+'</div></div><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
+  '<p style="font-size:12px;color:var(--text2);margin-bottom:10px">Clique sur une facture pour la lier \u00e0 cette transaction.</p>'+
+  '<div style="border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;max-height:55vh;overflow-y:auto">'+rows+'</div>'+
+  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button><button class="btn-primary" onclick="closeModal();openAdd()" style="flex:2">+ Scanner une nouvelle facture</button></div></div>';
+}
+
 function vSend(){
   var all=ST.expenses.filter(function(e){return e.period===ST.period;});
   var miss=all.filter(function(e){return!e.hasReceipt;}).length;
@@ -803,41 +731,41 @@ function vSend(){
   var body=_md&&_md.body?_md.body:generateMailBody(all);
   return '<div class="modal-wrap" style="max-width:580px">'+
   '<div class="modal-header"><h1 style="font-size:18px">\u2709 Envoyer \u00e0 l\u2019adjointe</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
-  (miss>0?'<div class="alert-amber">'+miss+' re\u00e7u'+(miss>1?'s':'')+' manquant'+(miss>1?'s':'')+' \u2014 rapport incomplet.</div>':'')+
+  (miss>0?'<div class="alert-amber">'+miss+' re\u00e7u'+(miss>1?'s':'')+' manquant'+(miss>1?'s':'')+'.</div>':'')+
   (persoAmt>0?'<div class="alert-purple">D\u00e9penses personnelles : '+fmt(persoAmt)+' \u00e0 rembourser.</div>':'')+
   '<div class="field"><label>Courriel de l\u2019adjointe</label><input id="adj-email" type="email" value="'+h(ST.adjEmail)+'" placeholder="adjointe@entreprise.com"></div>'+
   '<div class="field"><label>Aper\u00e7u</label><div class="send-preview">'+h(body)+'</div></div>'+
   '<div style="font-size:12px;color:var(--text3);margin-bottom:12px">T\u00e9l\u00e9chargez le rapport, puis joignez-le au courriel.</div>'+
-  '<div class="modal-footer" style="flex-wrap:wrap">'+
-    '<button class="btn" onclick="closeModal()" style="flex:1">Annuler</button>'+
-    '<button class="btn" onclick="doDownloadReport()" style="flex:1.5">\uD83D\uDCE5 Rapport</button>'+
-    '<button class="btn-primary" onclick="doOpenMail()" style="flex:2">\u2709 Ouvrir Mail</button>'+
-  '</div></div>';
+  '<div class="modal-footer" style="flex-wrap:wrap"><button class="btn" onclick="closeModal()" style="flex:1">Annuler</button><button class="btn" onclick="doDownloadReport()" style="flex:1.5">\uD83D\uDCE5 Rapport</button><button class="btn-primary" onclick="doOpenMail()" style="flex:2">\u2709 Ouvrir Mail</button></div></div>';
 }
 
-
-// Pre-extracted transactions from a known VISA statement
-function importPreloaded(){
-  var txs=[
-    {date:"2026-01-04",vendor:"Apple.com/Bill",amount:21.83,starred:true,category:"Logiciels / Abo."},
-    {date:"2026-01-07",vendor:"Shell C12331 Chicoutimi",amount:21.81,starred:false,category:"Carburant / Essence"},
-    {date:"2026-01-09",vendor:"ITCloud Trois-Rivieres",amount:15.77,starred:false,category:"Logiciels / Abo."},
-    {date:"2026-01-09",vendor:"ITCloud Trois-Rivieres",amount:1346.36,starred:false,category:"Logiciels / Abo."},
-    {date:"2026-01-10",vendor:"CMBuilder Cadmakers Burnaby",amount:614.25,starred:false,category:"Equipements"},
-    {date:"2026-01-14",vendor:"SP Contech Batiment Mont-Royal",amount:477.15,starred:true,category:"Equipements"},
-    {date:"2026-01-14",vendor:"Apple.com/Bill",amount:51.68,starred:true,category:"Logiciels / Abo."},
-    {date:"2026-01-16",vendor:"Golf Virtuel Saguenay",amount:72.82,starred:false,category:"Autre"},
-    {date:"2026-01-20",vendor:"Microsoft #G136277881",amount:22.94,starred:false,category:"Logiciels / Abo."},
-    {date:"2026-01-21",vendor:"UConnect Services CAD Windsor",amount:13.99,starred:false,category:"Logiciels / Abo."},
-    {date:"2026-01-25",vendor:"Canva I04772-27415505",amount:39.00,starred:false,category:"Logiciels / Abo."},
-    {date:"2026-01-27",vendor:"ITCloud Trois-Rivieres",amount:30.22,starred:false,category:"Logiciels / Abo."},
-    {date:"2026-01-27",vendor:"Cegep de Jonquiere",amount:7.00,starred:true,category:"Formation"},
-    {date:"2026-01-28",vendor:"McDonalds #40333 Chicoutimi",amount:18.71,starred:false,category:"Repas / Restaurant"},
-    {date:"2026-01-30",vendor:"Apple.com/Bill",amount:37.93,starred:true,category:"Logiciels / Abo."},
-  ];
-  var sel=new Set();for(var i=0;i<txs.length;i++)sel.add(i);
-  _md={view:"visa",txs:txs,sel:sel};
-  ST.modal="visa";ST.period="2026-01";render();
+function vSync(){
+  var isConfigured=GH.token&&GH.owner;
+  var statusColor='#ccc',statusText='Non configur\u00e9';
+  if(SYNC.status==='ok'){statusColor='#2d7a3a';statusText='\u2713 '+SYNC.msg;}
+  else if(SYNC.status==='syncing'){statusColor='#1a6fbf';statusText='\u21bb '+SYNC.msg;}
+  else if(SYNC.status==='error'){statusColor='#b83232';statusText='\u26a0 '+SYNC.msg;}
+  return '<div class="modal-wrap">'+
+  '<div class="modal-header"><h1 style="font-size:18px">\u2699 Param\u00e8tres</h1><button onclick="closeModal()" style="border:none;background:none;font-size:20px;color:var(--text3);padding:0">\u2715</button></div>'+
+  '<div style="display:flex;align-items:center;gap:6px;font-size:12px;padding:8px 10px;border-radius:var(--radius-sm);background:var(--bg2);margin-bottom:1rem"><span style="width:8px;height:8px;border-radius:50%;background:'+statusColor+';flex-shrink:0;display:inline-block"></span><span>'+statusText+'</span></div>'+
+  '<div style="padding-bottom:14px;margin-bottom:14px;border-bottom:1px solid var(--border)">'+
+    '<div style="font-size:13px;font-weight:bold;margin-bottom:6px;color:var(--text)">Cl\u00e9 API Anthropic (requis pour IA)</div>'+
+    '<div style="font-size:12px;color:var(--text2);margin-bottom:8px">Obtiens ta cl\u00e9 sur <strong>console.anthropic.com</strong> \u2192 API Keys \u2192 Create Key</div>'+
+    '<input id="ant-key" type="password" value="'+h(getApiKey())+'" placeholder="sk-ant-api03-..." style="font-family:monospace,serif;margin-bottom:6px">'+
+    '<button id="ant-save-btn" onclick="saveApiKeyFromUI()" style="width:100%;padding:7px;border:1px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);font-size:12px;cursor:pointer;font-family:inherit">Sauvegarder la cl\u00e9</button>'+
+  '</div>'+
+  '<div style="font-size:13px;font-weight:bold;margin-bottom:6px;color:var(--text)">\u2601 Synchronisation GitHub PC \u2194 iPhone</div>'+
+  '<div class="step-box"><div class="step-title">Configuration initiale (une seule fois)</div>'+
+    '<div class="step-item">1. Va sur github.com \u2192 Settings \u2192 Developer settings</div>'+
+    '<div class="step-item">2. Personal access tokens \u2192 Tokens (classic) \u2192 Generate new</div>'+
+    '<div class="step-item">3. Coche <strong>repo</strong> \u2192 G\u00e9n\u00e9rer \u2192 Copier le token</div>'+
+    '<div class="step-item">4. Colle-le ci-dessous avec ton nom GitHub</div>'+
+  '</div>'+
+  '<div class="field"><label>Token GitHub (ghp_...)</label><input id="gh-token" type="password" value="'+h(GH.token)+'" placeholder="ghp_xxxxxxxxxxxx"></div>'+
+  '<div class="grid2"><div class="field" style="margin:0"><label>Nom utilisateur GitHub</label><input id="gh-owner" value="'+h(GH.owner)+'" placeholder="pagau-cg"></div><div class="field" style="margin:0"><label>Nom du repo</label><input id="gh-repo" value="'+h(GH.repo||'depenses')+'" placeholder="depenses"></div></div>'+
+  '<div style="font-size:11px;color:var(--text3);margin-top:4px;margin-bottom:12px">Le token est sauvegard\u00e9 localement. \u00c0 r\u00e9p\u00e9ter sur chaque appareil.</div>'+
+  (isConfigured?'<button class="btn" style="width:100%;margin-bottom:8px" onclick="manualSync()">\u21bb R\u00e9synchroniser maintenant</button>':'')+
+  '<div class="modal-footer"><button class="btn" onclick="closeModal()" style="flex:1">Fermer</button><button id="gh-save-btn" class="btn-primary" onclick="saveGHSettings()" style="flex:2">Enregistrer et connecter</button></div></div>';
 }
 
 load();
